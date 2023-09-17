@@ -1,4 +1,4 @@
-import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O as m}from"./index-3150ab80.js";import{S as x}from"./index-ec8a6efe.js";const g=d`
+import{a as d,B as t,s as r,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O as m}from"./index-17b024d3.js";import{S as x}from"./index-90b4f0c2.js";const g=d`
   * {
     margin: 0;
     padding: 0;
@@ -71,11 +71,11 @@ import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O a
     position: relative;
     z-index: 100;
   }
-`,f={color:{blue:"#0075ff",turquoise:"#49D4C4",black:"#111",white:"#fff",lightGray:"#E8F0F8",gray:"#bfc3c5",blueGray:"#375574"},shadow:{default:"0 2.4rem 3.2rem 0 rgba(129, 188, 214, 0.12);"}},u="/assets/logo-529c3d78.svg",y=i.nav`
+`,f={color:{blue:"#0075ff",turquoise:"#49D4C4",black:"#111",white:"#fff",lightGray:"#E8F0F8",gray:"#bfc3c5",blueGray:"#375574"},shadow:{default:"0 2.4rem 3.2rem 0 rgba(129, 188, 214, 0.12);"}},u="/elecard/assets/logo-529c3d78.svg",y=r.nav`
   display: flex;
   gap: 1.5rem;
   text-transform: capitalize;
-`,b=i.header`
+`,b=r.header`
   padding: 1.6rem;
   display: flex;
   gap: 1.6rem;
@@ -85,18 +85,18 @@ import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O a
   background-color: ${({theme:o})=>o.color.white};
   position: relative;
   z-index: 10;
-`,w=i.img`
+`,w=r.img`
   object-fit: contain;
   width: 3rem;
   height: 3rem;
-`,s={Nav:y,Block:b,Logo:w},v=[{label:"Main",path:"/"},{label:"Catalog",path:"catalog"}],j=()=>e.jsx(s.Block,{children:e.jsx(l,{children:e.jsxs(a.Flex,{$gap:1.6,$align:"center",children:[e.jsx(c,{to:"/",children:e.jsx(s.Logo,{src:u})}),e.jsx(a.Flex,{$gap:1.6,children:v.map(o=>e.jsx(p,{to:o.path,children:o.label},o.path))})]})})}),$=n.memo(j),E=i.footer`
+`,s={Nav:y,Block:b,Logo:w},v=[{label:"Main",path:"/"},{label:"Catalog",path:"catalog"}],j=()=>e.jsx(s.Block,{children:e.jsx(l,{children:e.jsxs(a.Flex,{$gap:1.6,$align:"center",children:[e.jsx(c,{to:"/",children:e.jsx(s.Logo,{src:u})}),e.jsx(a.Flex,{$gap:1.6,children:v.map(o=>e.jsx(p,{to:o.path,children:o.label},o.path))})]})})}),$=n.memo(j),E=r.footer`
   border-top: 1px solid ${({theme:o})=>o.color.blue}50;
   padding: 1.6rem;
-`,k=()=>e.jsx(E,{children:e.jsx(l,{children:e.jsx(a.Flex,{$justify:"flex-end",children:"This project was made by Nikolay Yushin"})})}),L=n.memo(k),A=i.div`
+`,k=()=>e.jsx(E,{children:e.jsx(l,{children:e.jsx(a.Flex,{$justify:"flex-end",children:"This project was made by Nikolay Yushin"})})}),L=n.memo(k),A=r.div`
   height: 100%;
   display: grid;
   overflow: auto;
-`,C=i(x)`
+`,C=r(x)`
   max-width: 100vw;
   overflow-x: hidden;
   grid-area: 1/1/1/1;
@@ -118,12 +118,12 @@ import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O a
     opacity: 0;
     transition: opacity 300ms linear, transform 300ms linear;
   }
-`,z=i.div`
+`,z=r.div`
   display: grid;
   overflow: hidden;
   height: 100vh;
   max-height: 100vh;
   max-height: 100dvh;
   grid-template-rows: auto 1fr auto;
-`,r={Main:A,Container:C,AppWrapper:z},B=()=>e.jsxs(h,{theme:f,children:[e.jsx(g,{}),e.jsxs(r.AppWrapper,{children:[e.jsx($,{}),e.jsx(r.Main,{children:e.jsx(r.Container,{autoHide:!0,children:e.jsx(m,{})})}),e.jsx(L,{})]})]}),G=n.memo(B);export{G as default};
-//# sourceMappingURL=index-dcf9ac8d.js.map
+`,i={Main:A,Container:C,AppWrapper:z},B=()=>e.jsxs(h,{theme:f,children:[e.jsx(g,{}),e.jsxs(i.AppWrapper,{children:[e.jsx($,{}),e.jsx(i.Main,{children:e.jsx(i.Container,{autoHide:!0,children:e.jsx(m,{})})}),e.jsx(L,{})]})]}),G=n.memo(B);export{G as default};
+//# sourceMappingURL=index-bf99aac2.js.map
