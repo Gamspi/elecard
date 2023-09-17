@@ -1,4 +1,4 @@
-import{x as g,r as n,y as p,s as r,B as h,z as x,j as o,A as f}from "../index-dc745bb9.js";import{u as j,C}from"./index-ee8baac1.js";const w=()=>{const t=g(),[e,l]=n.useState(null),{list:c,isLoading:m}=j(s=>s.catalog),{id:a}=p(),d=()=>t("/catalog");return n.useEffect(()=>{setTimeout(()=>{if(!a)return t("/catalog");if(m)return;const s=c.find(u=>u.id.toString()===a);if(!s)return t("/catalog");l(s)})},[a,m,c,t]),{item:e,handelToBack:d}},B=r.aside`
+import{x as g,r as n,y as p,s as r,B as h,z as x,j as o,A as f}from"./index-dc745bb9.js";import{u as j,C}from"./index-ee8baac1.js";const w=()=>{const t=g(),[e,l]=n.useState(null),{list:c,isLoading:m}=j(s=>s.catalog),{id:a}=p(),d=()=>t("/catalog");return n.useEffect(()=>{setTimeout(()=>{if(!a)return t("/catalog");if(m)return;const s=c.find(u=>u.id.toString()===a);if(!s)return t("/catalog");l(s)})},[a,m,c,t]),{item:e,handelToBack:d}},B=r.aside`
   position: fixed;
   top: 0;
   left: 0;
