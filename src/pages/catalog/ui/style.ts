@@ -12,6 +12,7 @@ const Content = styled(Container)`
   @media (min-width: ${BreakpointEnum.DESKTOP}px) {
     display: grid;
     grid-template-columns: 20rem 1fr;
+    grid-template-rows: auto 1fr;
     gap: 4rem;
   }
   @media (min-width: ${BreakpointEnum.EXTRA_LARGE}px) {
@@ -24,11 +25,14 @@ const List = styled.section`
   height: 100%;
   @media (min-width: ${BreakpointEnum.DESKTOP}px) {
     grid-column: 2/3;
+    grid-row: 1/3;
   }
 `
 const TreeList = styled(Scrollbars)`
   display: none;
+
   @media (min-width: ${BreakpointEnum.DESKTOP}px) {
+    grid-column: 1/2;
     display: block;
   }
 `

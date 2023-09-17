@@ -1,7 +1,11 @@
 import styled from "styled-components"
+import { Container } from "@shared/ui"
 
-const styledTitle = styled.h1``
+const styledContainer = styled(Container)`
+  display: grid;
+  gap: 1.6rem;
+`
 
-export const StyledMain = {
-  Title: styledTitle,
+export const style = {
+  Container: styledContainer,
 }
