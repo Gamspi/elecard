@@ -2,11 +2,7 @@ import React, { memo } from "react"
 import { CatalogImagePopup } from "@widgets/catalogImagePopup"
 
 const CatalogDetail = () => {
-  return (
-    <>
-      <CatalogImagePopup />
-    </>
-  )
+  return <CatalogImagePopup />
 }
 
 export default memo(CatalogDetail)
