@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import * as StyledComponent from "./style"
-import { QUANTITY } from "../config"
+import { QUANTITY, quantityList } from "../config"
 import { CatalogComponent } from "@entities/catalog"
 import { useModel as useCatalogListModel } from "../model"
 import { Loader } from "@widgets/loader"
@@ -12,23 +12,34 @@ import {
   RefreshCatalogList,
 } from "@features/catalog"
 import { CSSTransition } from "react-transition-group"
+import { Box, SelectBox } from "@shared/ui"
 
 const CatalogList = () => {
   const {
     page,
+    quantity,
     isLoading,
     computedList,
     scrollListNode,
     handelSetPage,
     handelSetSortedList,
+    handelSetQuantity,
   } = useCatalogListModel()
   return (
     <StyledComponent.Block>
       <Loader isLoading={isLoading} />
 
       <StyledComponent.Actions>
+        <Box.Flex $gap={1.6} $justify="flex-end" $align="center">
+          <SelectBox
+            options={quantityList}
+            value={quantity}
+            onChange={handelSetQuantity}
+          />
+          <RefreshCatalogList>Reset</RefreshCatalogList>
+        </Box.Flex>
+
         <CatalogFilter setList={handelSetSortedList} />
-        <RefreshCatalogList>Reset</RefreshCatalogList>
       </StyledComponent.Actions>
 
       <StyledComponent.Scroll autoHide ref={scrollListNode}>
@@ -48,7 +59,7 @@ const CatalogList = () => {
       <StyledComponent.Pagination>
         <CatalogPagination
           currentPage={page}
-          pageSize={QUANTITY}
+          pageSize={quantity}
           onChange={handelSetPage}
         />
       </StyledComponent.Pagination>

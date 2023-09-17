@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import { Container, Page, Typography } from "@shared/ui"
 
-const Ui = () => {
+const MainPage = () => {
   return (
     <Page>
       <Container>
@@ -11,4 +11,4 @@ const Ui = () => {
   )
 }
 
-export default memo(Ui)
+export default memo(MainPage)

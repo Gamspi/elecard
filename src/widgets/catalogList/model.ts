@@ -9,6 +9,7 @@ export const useModel = () => {
   const scrollListNode = useRef<Scrollbars>(null)
   const dispatch = useAppDispatch()
   const [sortedList, setSortedList] = useState<CatalogItem[]>([])
+  const [quantity, setQuantity] = useState(QUANTITY)
   const { isLoading } = useTypeSelector((state) => state.catalog)
   const [page, setPage] = useState(1)
   const handelSetPage = (page: number) => {
@@ -19,13 +20,17 @@ export const useModel = () => {
     setSortedList(value)
   }
   const computedList = useMemo(() => {
-    const from = QUANTITY * (page - 1)
-    const to = QUANTITY * page
+    const from = quantity * (page - 1)
+    const to = quantity * page
     return sortedList.slice(from, to)
-  }, [sortedList, page])
+  }, [quantity, sortedList, page])
 
   const fetchData = async () => {
     await dispatch(CatalogModel.actions.getCatalogList())
+  }
+
+  const handelSetQuantity = (value: number | string) => {
+    setQuantity(+value)
   }
   useEffect(() => {
     setPage(1)
@@ -36,10 +41,12 @@ export const useModel = () => {
 
   return {
     page,
+    quantity,
     isLoading,
     computedList,
     scrollListNode,
     handelSetPage,
+    handelSetQuantity,
     handelSetSortedList,
   }
 }

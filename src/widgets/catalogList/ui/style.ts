@@ -40,8 +40,5 @@ const Actions = styled.div`
   display: grid;
   gap: 1.6rem;
   align-items: center;
-  @media (min-width: ${BreakpointEnum.TABLET}px) {
-    grid-template-columns: 1fr auto;
-  }
 `
 export { Block, Content, Pagination, Actions, Scroll }
