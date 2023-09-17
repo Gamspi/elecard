@@ -15,6 +15,7 @@ const CatalogFilter = (props: Props) => {
     <StyledComponent.Block>
       {filters.map((item) => (
         <FilterRadioItem
+          key={item.code}
           isRevert={isRevert}
           code={item.code}
           onChange={() => handelChangeSortValue(item.code)}
