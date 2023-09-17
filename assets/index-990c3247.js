@@ -1,4 +1,4 @@
-import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O as m}from"./index-dc745bb9.js";import{S as x}from"./index-48074baa.js";const g=d`
+import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O as m}from "../index-dc745bb9.js";import{S as x}from"./index-48074baa.js";const g=d`
   * {
     margin: 0;
     padding: 0;
