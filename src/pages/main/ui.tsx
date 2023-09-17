@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { Container, Page, Typography } from "@shared/ui"
+import { Page, Typography } from "@shared/ui"
 import { style as StyledComponent } from "./style"
 
 const MainPage = () => {
