@@ -1,4 +1,4 @@
-import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O as m}from"./index-54b2b1e8.js";import{S as x}from"./index-0d50977e.js";const g=d`
+import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O as m}from"./index-3150ab80.js";import{S as x}from"./index-ec8a6efe.js";const g=d`
   * {
     margin: 0;
     padding: 0;
@@ -126,4 +126,4 @@ import{a as d,B as t,s as i,r as n,j as e,C as l,b as a,L as c,c as p,X as h,O a
   max-height: 100dvh;
   grid-template-rows: auto 1fr auto;
 `,r={Main:A,Container:C,AppWrapper:z},B=()=>e.jsxs(h,{theme:f,children:[e.jsx(g,{}),e.jsxs(r.AppWrapper,{children:[e.jsx($,{}),e.jsx(r.Main,{children:e.jsx(r.Container,{autoHide:!0,children:e.jsx(m,{})})}),e.jsx(L,{})]})]}),G=n.memo(B);export{G as default};
-//# sourceMappingURL=index-505571c2.js.map
+//# sourceMappingURL=index-dcf9ac8d.js.map
