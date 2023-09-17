@@ -8,52 +8,50 @@ import { NotFoundPage } from "@pages/notFoundPage"
 const Layout = lazy(() => import("../layout/index"))
 const AppRouter = () => {
   return (
-    <>
-      <Routes>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Suspense>
+            <Layout />
+          </Suspense>
+        }
+      >
         <Route
-          path="/"
+          index
           element={
             <Suspense>
-              <Layout />
+              <Main />
+            </Suspense>
+          }
+        />
+        <Route
+          path="catalog"
+          element={
+            <Suspense>
+              <Catalog />
             </Suspense>
           }
         >
           <Route
-            index
+            path=":id"
             element={
               <Suspense>
-                <Main />
-              </Suspense>
-            }
-          />
-          <Route
-            path="catalog"
-            element={
-              <Suspense>
-                <Catalog />
-              </Suspense>
-            }
-          >
-            <Route
-              path=":id"
-              element={
-                <Suspense>
-                  <CatalogDetail />
-                </Suspense>
-              }
-            />
-          </Route>
-          <Route
-            path="*"
-            element={
-              <Suspense>
-                <NotFoundPage />
+                <CatalogDetail />
               </Suspense>
             }
           />
         </Route>
-      </Routes>
-    </>
+        <Route
+          path="*"
+          element={
+            <Suspense>
+              <NotFoundPage />
+            </Suspense>
+          }
+        />
+      </Route>
+    </Routes>
   )
 }
 

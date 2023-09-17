@@ -30,9 +30,7 @@ const TreeListContent = ({ item, button }: Props) => {
       {item.list?.length ? (
         ButtonElement
       ) : (
-        <StyledComponent.ItemWrapper>
-          {item.element || item.name}
-        </StyledComponent.ItemWrapper>
+        <StyledComponent.ItemWrapper>{item.name}</StyledComponent.ItemWrapper>
       )}
       {childrenList}
     </StyledComponent.Item>
