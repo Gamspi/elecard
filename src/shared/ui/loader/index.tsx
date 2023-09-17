@@ -1,5 +1,5 @@
 import React, { memo, useRef } from "react"
-import { Styled } from "@widgets/loader/style"
+import { style as StyledComponent } from "./style"
 import { Box, Spinner } from "@shared/ui"
 import { CSSTransition } from "react-transition-group"
 import { Portal } from "@shared/ui"
@@ -20,11 +20,11 @@ const LoaderLayout = ({ isLoading }: Props) => {
     >
       <>
         <Portal>
-          <Styled.Block ref={ref}>
+          <StyledComponent.Block ref={ref}>
             <Box.Flex $justify="center" $align="center">
               <Spinner />
             </Box.Flex>
-          </Styled.Block>
+          </StyledComponent.Block>
         </Portal>
       </>
     </CSSTransition>

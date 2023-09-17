@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import * as StyledComponent from "./style"
-import { usePagination } from "./controller"
+import { useController } from "./controller"
 import { DOTS } from "./config"
 
 type Props = {
@@ -18,7 +18,7 @@ const Component = (props: Props) => {
     handelNext,
     onPageChange,
     handelPrevious,
-  } = usePagination(props)
+  } = useController(props)
 
   if (currentPage === 0 || paginationRange.length < 2) {
     return null

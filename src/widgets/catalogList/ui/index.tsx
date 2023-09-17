@@ -1,9 +1,9 @@
 import React, { memo } from "react"
 import * as StyledComponent from "./style"
-import { QUANTITY, quantityList } from "../config"
+import { quantityList } from "../config"
 import { CatalogComponent } from "@entities/catalog"
 import { useModel as useCatalogListModel } from "../model"
-import { Loader } from "@widgets/loader"
+import { Loader } from "@shared/ui"
 
 import {
   CatalogFilter,

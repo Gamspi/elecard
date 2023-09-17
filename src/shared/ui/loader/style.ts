@@ -29,6 +29,6 @@ const Block = styled.aside`
   }
 `
 
-export const Styled = {
+export const style = {
   Block,
 }

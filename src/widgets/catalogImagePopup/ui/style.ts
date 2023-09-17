@@ -1,7 +1,6 @@
 import styled from "styled-components"
-import { Button as UiButton } from "@shared/ui"
+import { Button as UiButton, Image } from "@shared/ui"
 import { BreakpointEnum } from "@shared/lib"
-import { LoadingImage } from "@features/loadingImage"
 
 const Container = styled.aside`
   position: fixed;
@@ -25,11 +24,11 @@ const Button = styled(UiButton.Icon)`
     height: 8rem;
   }
 `
-const Image = styled(LoadingImage)`
+const styledImage = styled(Image)`
   border-radius: 1.6rem;
 `
 export const style = {
+  Image: styledImage,
   Container,
   Button,
-  Image,
 }

@@ -1,10 +1,10 @@
 import React, { memo } from "react"
-import { useModel } from "../model"
+import { useModel as useCatalogImagePopupModel } from "../model"
 import { style as StyledComponent } from "./style"
 import { Portal } from "@shared/ui"
 
 const CatalogImagePopup = () => {
-  const { handelToBack, item } = useModel()
+  const { handelToBack, item } = useCatalogImagePopupModel()
   return (
     <Portal>
       <StyledComponent.Container>

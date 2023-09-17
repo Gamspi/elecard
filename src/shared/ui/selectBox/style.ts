@@ -3,7 +3,7 @@ import styled from "styled-components"
 type StyledProps = {
   $isOpen: boolean
 }
-type StyledItmeProps = {
+type StyledItemProps = {
   $isActive: boolean
 }
 const Container = styled.div`
@@ -51,7 +51,7 @@ const Footer = styled.div<StyledProps>`
   background: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.blue};
 `
-const Item = styled.button<StyledItmeProps>`
+const Item = styled.button<StyledItemProps>`
   padding: 0.8rem;
   width: 100%;
   text-align: start;

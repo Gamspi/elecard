@@ -1,7 +1,7 @@
-import { Component as Router } from "./router"
+import { Component as RouterComponent } from "./router"
 
 function App() {
-  return <Router />
+  return <RouterComponent />
 }
 
 export default App

@@ -1,27 +1,22 @@
 import React, { ComponentProps, memo, ReactElement } from "react"
-import * as StyledComponent from "../style"
+import * as StyledComponent from "./style"
 
-import { Typography } from "@shared/ui"
+import { Image, Typography } from "@shared/ui"
 import { CatalogItem } from "@entities/catalog/model/types"
 import { Link } from "react-router-dom"
-import { LoadingImage } from "@features/loadingImage"
 
 type Props = {
   item: CatalogItem
   action?: ReactElement
 } & ComponentProps<typeof Link>
 
-const Component = ({ item, action, ...props }: Props) => {
+const CatalogCard = ({ item, action, ...props }: Props) => {
   return (
     <StyledComponent.Block>
       <StyledComponent.Container {...props}>
         <StyledComponent.Header>
           <StyledComponent.ImageContainer>
-            <LoadingImage
-              src={item.image}
-              alt={`${item.id}`}
-              $objectFit="cover"
-            />
+            <Image src={item.image} alt={`${item.id}`} $objectFit="cover" />
           </StyledComponent.ImageContainer>
         </StyledComponent.Header>
         <StyledComponent.Body>
@@ -37,4 +32,4 @@ const Component = ({ item, action, ...props }: Props) => {
   )
 }
 
-export const Layout = memo(Component)
+export const Component = memo(CatalogCard)

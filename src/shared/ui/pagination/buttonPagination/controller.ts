@@ -1,18 +1,18 @@
 import { useMemo } from "react"
 import { DOTS } from "./config"
 
-type hookType = {
+type ControllerProps = {
   totalPageCount: number
   siblingCount?: number
   currentPage: number
   onChange: (page: number) => void
 }
-export const usePagination = ({
+export const useController = ({
   onChange,
   currentPage,
   siblingCount = 1,
   totalPageCount,
-}: hookType) => {
+}: ControllerProps) => {
   const onPageChange = (n: number) => onChange(n)
   const range = (start: number, end: number) => {
     const length = end - start + 1
