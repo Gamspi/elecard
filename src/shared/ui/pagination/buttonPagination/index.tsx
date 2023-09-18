@@ -2,6 +2,7 @@ import React, { memo } from "react"
 import * as StyledComponent from "./style"
 import { useController } from "./controller"
 import { DOTS } from "./config"
+import { getUniqueId } from "@shared/lib/helpers/getUniqueId"
 
 type Props = {
   totalPageCount: number
@@ -32,10 +33,10 @@ const Component = (props: Props) => {
       >
         &#8592;
       </StyledComponent.Button>
-      {paginationRange.map((pageNumber) => {
+      {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
           return (
-            <StyledComponent.Button disabled key={pageNumber}>
+            <StyledComponent.Button disabled key={pageNumber + getUniqueId()}>
               {DOTS}
             </StyledComponent.Button>
           )

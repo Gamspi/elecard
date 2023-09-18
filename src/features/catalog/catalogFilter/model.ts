@@ -9,7 +9,7 @@ type Args = {
 }
 
 export const useModel = ({ setList }: Args) => {
-  const [sort, setSort] = useState(CatalogSortEnum.NAME)
+  const [sort, setSort] = useState(CatalogSortEnum.CATEGORY)
   const [isRevert, setIsRevert] = useState(false)
   const { isLoading, list } = useTypeSelector((state) => state.catalog)
   const sortedCatalogList = useMemo(() => {

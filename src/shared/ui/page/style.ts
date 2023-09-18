@@ -3,7 +3,7 @@ import { BreakpointEnum } from "@shared/lib"
 
 export const StyledPage = styled.div`
   padding: 6rem 0;
-  height: 100%;
+  min-height: fit-content;
   @media (min-width: ${BreakpointEnum.DESKTOP}px) {
     padding: 4rem 0;
   }
