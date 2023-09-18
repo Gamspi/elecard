@@ -1,7 +1,6 @@
 import React, { memo } from "react"
 import { Page, Typography } from "@shared/ui"
 import { style as StyledComponent } from "./style"
-import Scrollbars from "react-custom-scrollbars-2"
 
 const MainPage = () => {
   return (

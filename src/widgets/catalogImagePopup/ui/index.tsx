@@ -13,11 +13,13 @@ const CatalogImagePopup = () => {
             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>
         </StyledComponent.Button>
-        <StyledComponent.Image
-          src={currentItem?.image}
-          alt={`${currentItem?.name}`}
-          $objectFit="cover"
-        />
+        <StyledComponent.Body>
+          <StyledComponent.Image
+            src={currentItem?.image}
+            alt={`${currentItem?.name}`}
+            $objectFit="cover"
+          />
+        </StyledComponent.Body>
       </StyledComponent.Container>
     </Portal>
   )

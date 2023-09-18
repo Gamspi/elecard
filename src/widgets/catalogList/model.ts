@@ -12,9 +12,12 @@ export const useModel = () => {
   const [quantity, setQuantity] = useState(QUANTITY)
   const { isLoading } = useTypeSelector((state) => state.catalog)
   const [page, setPage] = useState(1)
+  const scrollListToTop = () => {
+    scrollListNode.current?.scrollTop(0)
+  }
   const handelSetPage = (page: number) => {
     setPage(page)
-    scrollListNode.current?.scrollTop(0)
+    scrollListToTop()
   }
   const handelSetSortedList = (value: CatalogItem[]) => {
     setSortedList(value)
@@ -34,6 +37,7 @@ export const useModel = () => {
   }
   useEffect(() => {
     setPage(1)
+    scrollListToTop()
   }, [sortedList])
   useEffect(() => {
     void fetchData()
