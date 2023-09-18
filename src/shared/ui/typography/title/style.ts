@@ -7,8 +7,16 @@ const h1 = css`
   line-height: 5.4rem;
   @media (min-width: ${BreakpointEnum.DESKTOP}px) {
     font-size: 5.6rem;
-    font-weight: 500;
     line-height: 6.8rem;
+  }
+`
+const h3 = css`
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.6rem; /* 130% */
+  @media (min-width: ${BreakpointEnum.DESKTOP}px) {
+    font-size: 2.4rem;
+    line-height: 3.2rem; /* 133.333% */
   }
 `
 const h5 = css`
@@ -35,6 +43,8 @@ const h6 = css`
 export const StyledTitle = styled.div`
   ${({ as }) => {
     switch (as) {
+      case "h3":
+        return h3
       case "h5":
         return h5
       case "h6":
