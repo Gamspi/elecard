@@ -4,7 +4,7 @@ import { style as StyledComponent } from "./style"
 import { Portal } from "@shared/ui"
 
 const CatalogImagePopup = () => {
-  const { handelToBack, item } = useCatalogImagePopupModel()
+  const { handelToBack, currentItem } = useCatalogImagePopupModel()
   return (
     <Portal>
       <StyledComponent.Container>
@@ -14,8 +14,8 @@ const CatalogImagePopup = () => {
           </svg>
         </StyledComponent.Button>
         <StyledComponent.Image
-          src={item?.image}
-          alt={`${item?.name}`}
+          src={currentItem?.image}
+          alt={`${currentItem?.name}`}
           $objectFit="cover"
         />
       </StyledComponent.Container>

@@ -4,4 +4,6 @@ export const initialState: CatalogState = {
   list: [],
   isError: false,
   isLoading: false,
+  currentItem: null,
+  isItemLoading: false,
 }
