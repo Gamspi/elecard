@@ -3,9 +3,9 @@
 - React
 - Redux-toolkit
 - Axios
-- styled-components
+- Styled-components
 - React transition group
-- Type script
+- TypeScript
 
 ### Node version 19.5.0
 
