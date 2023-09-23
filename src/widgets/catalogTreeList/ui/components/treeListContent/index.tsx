@@ -9,10 +9,10 @@ type Props = {
 }
 const TreeListContent = ({ item, button }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
-  const handelChangeIsOpen = () => setIsOpen((prev) => !prev)
+  const handleChangeIsOpen = () => setIsOpen((prev) => !prev)
   let childrenList = null
   const ButtonElement = React.cloneElement(button, {
-    onClick: handelChangeIsOpen,
+    onClick: handleChangeIsOpen,
     children: item.name,
     $isActive: isOpen,
   })

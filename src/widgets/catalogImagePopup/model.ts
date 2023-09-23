@@ -8,7 +8,7 @@ export const useModel = () => {
   const dispatch = useAppDispatch()
   const { currentItem } = useTypeSelector((state) => state.catalog)
   const { id } = useParams()
-  const handelToBack = () => navigate("/catalog")
+  const handleToBack = () => navigate("/catalog")
   const fetchData = async () => {
     try {
       if (!id) throw new Error("id isn't valid")
@@ -23,6 +23,6 @@ export const useModel = () => {
 
   return {
     currentItem,
-    handelToBack,
+    handleToBack,
   }
 }

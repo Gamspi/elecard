@@ -59,9 +59,9 @@ export const useController = ({
     }
     return []
   }, [siblingCount, totalPageCount, currentPage])
-  const handelNext = () => onPageChange(currentPage + 1)
+  const handleNext = () => onPageChange(currentPage + 1)
 
-  const handelPrevious = () => onPageChange(currentPage - 1)
+  const handlePrevious = () => onPageChange(currentPage - 1)
 
   let isLastPage = paginationRange[paginationRange.length - 1] === currentPage
 
@@ -70,8 +70,8 @@ export const useController = ({
     isLastPage,
     paginationRange,
     isActive,
-    handelNext,
+    handleNext,
     onPageChange,
-    handelPrevious,
+    handlePrevious,
   }
 }

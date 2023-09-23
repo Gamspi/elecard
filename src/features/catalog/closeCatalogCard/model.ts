@@ -4,10 +4,10 @@ import { CatalogItem } from "@entities/catalog/model/types"
 
 export const useCloseCatalogCard = (id: CatalogItem["id"]) => {
   const dispatch = useAppDispatch()
-  const handelDelete = () => {
+  const handleDelete = () => {
     dispatch(CatalogModel.actions.deleteCatalogItem(id))
   }
   return {
-    handelDelete,
+    handleDelete,
   }
 }

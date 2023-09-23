@@ -9,7 +9,7 @@ type Props = {
   setList: (list: CatalogItem[]) => void
 }
 const CatalogFilter = (props: Props) => {
-  const { sort, handelChangeSortValue, isRevert } = useCatalogFilterModel(props)
+  const { sort, handleChangeSortValue, isRevert } = useCatalogFilterModel(props)
   const id = useId()
   return (
     <StyledComponent.Block>
@@ -18,7 +18,7 @@ const CatalogFilter = (props: Props) => {
           key={item.code}
           isRevert={isRevert}
           code={item.code}
-          onChange={() => handelChangeSortValue(item.code)}
+          onChange={() => handleChangeSortValue(item.code)}
           label={item.label}
           isActive={sort === item.code}
           name={id}

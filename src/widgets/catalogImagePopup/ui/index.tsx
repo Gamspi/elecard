@@ -4,11 +4,11 @@ import { style as StyledComponent } from "./style"
 import { Portal } from "@shared/ui"
 
 const CatalogImagePopup = () => {
-  const { handelToBack, currentItem } = useCatalogImagePopupModel()
+  const { handleToBack, currentItem } = useCatalogImagePopupModel()
   return (
     <Portal>
       <StyledComponent.Container>
-        <StyledComponent.Button onClick={handelToBack}>
+        <StyledComponent.Button onClick={handleToBack}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>

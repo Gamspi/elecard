@@ -21,9 +21,9 @@ const CatalogList = () => {
     isLoading,
     computedList,
     scrollListNode,
-    handelSetPage,
-    handelSetSortedList,
-    handelSetQuantity,
+    handleSetPage,
+    handleSetSortedList,
+    handleSetQuantity,
   } = useCatalogListModel()
   return (
     <StyledComponent.Block>
@@ -34,12 +34,12 @@ const CatalogList = () => {
           <SelectBox
             options={quantityList}
             value={quantity}
-            onChange={handelSetQuantity}
+            onChange={handleSetQuantity}
           />
           <RefreshCatalogList>Reset</RefreshCatalogList>
         </Box.Flex>
 
-        <CatalogFilter setList={handelSetSortedList} />
+        <CatalogFilter setList={handleSetSortedList} />
       </StyledComponent.Actions>
 
       <StyledComponent.Scroll autoHide ref={scrollListNode}>
@@ -60,7 +60,7 @@ const CatalogList = () => {
         <CatalogPagination
           currentPage={page}
           pageSize={quantity}
-          onChange={handelSetPage}
+          onChange={handleSetPage}
         />
       </StyledComponent.Pagination>
     </StyledComponent.Block>

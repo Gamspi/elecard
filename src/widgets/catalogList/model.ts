@@ -15,11 +15,11 @@ export const useModel = () => {
   const scrollListToTop = () => {
     scrollListNode.current?.scrollTop(0)
   }
-  const handelSetPage = (page: number) => {
+  const handleSetPage = (page: number) => {
     setPage(page)
     scrollListToTop()
   }
-  const handelSetSortedList = (value: CatalogItem[]) => {
+  const handleSetSortedList = (value: CatalogItem[]) => {
     setSortedList(value)
   }
   const computedList = useMemo(() => {
@@ -32,7 +32,7 @@ export const useModel = () => {
     await dispatch(CatalogModel.actions.getCatalogList())
   }
 
-  const handelSetQuantity = (value: number | string) => {
+  const handleSetQuantity = (value: number | string) => {
     setQuantity(+value)
   }
   useEffect(() => {
@@ -49,8 +49,8 @@ export const useModel = () => {
     isLoading,
     computedList,
     scrollListNode,
-    handelSetPage,
-    handelSetQuantity,
-    handelSetSortedList,
+    handleSetPage,
+    handleSetQuantity,
+    handleSetSortedList,
   }
 }

@@ -10,14 +10,14 @@ type Props = {
   onChange: (value: string | number) => void
 }
 const SelectBox = ({ placeholder, options, onChange, value }: Props) => {
-  const { containerRef, isOpen, currentOption, handelToggleIsOpen } =
+  const { containerRef, isOpen, currentOption, handleToggleIsOpen } =
     useSelectController({
       value,
       options,
     })
   return (
     <StyledComponent.Container ref={containerRef} className="j-select">
-      <StyledComponent.Header onClick={handelToggleIsOpen} $isOpen={isOpen}>
+      <StyledComponent.Header onClick={handleToggleIsOpen} $isOpen={isOpen}>
         <span>{currentOption ? currentOption.label : placeholder}</span>
       </StyledComponent.Header>
       <StyledComponent.Footer $isOpen={isOpen}>

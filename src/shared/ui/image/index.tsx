@@ -6,7 +6,7 @@ import { Spinner } from "@shared/ui"
 
 type Props = Omit<ComponentProps<typeof StyledComponent.Content>, "$isLoaded">
 const LoadingImage = (props: Props) => {
-  const { isLoading, handelLoad } = useController()
+  const { isLoading, handleLoad } = useController()
   return (
     <StyledComponent.Wrapper $objectFit={props.$objectFit}>
       <CSSTransition in={isLoading} timeout={300} mountOnEnter unmountOnExit>
@@ -17,7 +17,7 @@ const LoadingImage = (props: Props) => {
       <StyledComponent.Content
         {...props}
         $isLoaded={!isLoading}
-        onLoad={handelLoad}
+        onLoad={handleLoad}
       />
     </StyledComponent.Wrapper>
   )

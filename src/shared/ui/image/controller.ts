@@ -2,11 +2,11 @@ import { useState } from "react"
 
 export const useController = () => {
   const [isLoading, setIsLoading] = useState(true)
-  const handelLoad = () => {
+  const handleLoad = () => {
     setIsLoading(false)
   }
   return {
     isLoading,
-    handelLoad,
+    handleLoad,
   }
 }

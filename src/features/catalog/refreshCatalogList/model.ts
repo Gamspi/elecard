@@ -3,11 +3,11 @@ import { CatalogModel } from "@entities/catalog"
 
 export const useModel = () => {
   const dispatch = useAppDispatch()
-  const handelRefreshList = () => {
+  const handleRefreshList = () => {
     dispatch(CatalogModel.actions.refreshCatalogList())
     dispatch(CatalogModel.actions.getCatalogList())
   }
   return {
-    handelRefreshList,
+    handleRefreshList,
   }
 }

@@ -17,7 +17,7 @@ export const useModel = ({ setList }: Args) => {
     if (isRevert) resultList = [...resultList.reverse()]
     return resultList
   }, [isRevert, list, sort])
-  const handelChangeSortValue = (code: CatalogSortEnum) => {
+  const handleChangeSortValue = (code: CatalogSortEnum) => {
     if (code === sort) return setIsRevert((prev) => !prev)
     setSort(code)
     setIsRevert(false)
@@ -30,6 +30,6 @@ export const useModel = ({ setList }: Args) => {
   return {
     sort,
     isRevert,
-    handelChangeSortValue,
+    handleChangeSortValue,
   }
 }
