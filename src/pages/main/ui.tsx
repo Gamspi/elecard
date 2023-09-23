@@ -14,7 +14,7 @@ const MainPage = () => {
         <Typography.List>
           <li>React</li>
           <li>Axios</li>
-          <li>Type script</li>
+          <li>TypeScript</li>
           <li>Redux-toolkit</li>
           <li>Styled components</li>
           <li>React transition group - for animation</li>

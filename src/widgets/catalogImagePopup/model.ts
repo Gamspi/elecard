@@ -8,7 +8,10 @@ export const useModel = () => {
   const dispatch = useAppDispatch()
   const { currentItem } = useTypeSelector((state) => state.catalog)
   const { id } = useParams()
-  const handleToBack = () => navigate("/catalog")
+  const handleToBack = () => {
+    navigate("/catalog")
+    dispatch(CatalogModel.actions.setCurrentItem(null))
+  }
   const fetchData = async () => {
     try {
       if (!id) throw new Error("id isn't valid")

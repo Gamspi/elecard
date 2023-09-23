@@ -52,6 +52,9 @@ const slice = createSlice({
       state.isError = false
       state.list = action.payload
     },
+    setCurrentItem: (state, action: PayloadAction<CatalogItem | null>) => {
+      state.currentItem = action.payload
+    },
     refreshCatalogList: () => {
       localStorage.setItem(DELETE_CATALOG_KEY, "")
     },
