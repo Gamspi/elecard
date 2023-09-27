@@ -2,10 +2,10 @@ import React, { memo } from "react"
 import { Component as TreeListContent } from "./components/treeListContent"
 import { Component as TreeListButton } from "./components/treeListButton"
 
-import { useModel as useTreeListModel } from "@widgets/catalogTreeList/model"
+import { useController as useTreeListController } from "@widgets/catalogTreeList/model"
 
 const CatalogTreeList = () => {
-  const { treeList } = useTreeListModel()
+  const { treeList } = useTreeListController()
   return !treeList ? null : (
     <ul>
       <TreeListContent item={treeList} button={<TreeListButton />} />

@@ -1,7 +1,7 @@
 import React, { memo, useId } from "react"
 import { Component as FilterRadioItem } from "./component/RadioFilterItem"
 import { filters } from "@features/catalog/catalogFilter/config"
-import { useModel as useCatalogFilterModel } from "@features/catalog/catalogFilter/model"
+import { useController as useCatalogFilterController } from "@features/catalog/catalogFilter/model"
 import { style as StyledComponent } from "./style"
 import { CatalogItem } from "@entities/catalog/model/types"
 import { CatalogSortEnum } from "@features/catalog/catalogFilter/lib/enum"
@@ -13,7 +13,8 @@ type Props = {
   list: CatalogItem[]
 }
 const CatalogFilter = (props: Props) => {
-  const { sort, handleChangeSortValue, isRevert } = useCatalogFilterModel(props)
+  const { sort, handleChangeSortValue, isRevert } =
+    useCatalogFilterController(props)
   const id = useId()
   return (
     <StyledComponent.Block>

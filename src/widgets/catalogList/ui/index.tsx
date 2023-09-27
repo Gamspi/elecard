@@ -2,7 +2,7 @@ import React, { memo } from "react"
 import { style as StyledComponent } from "./style"
 import { QUANTITY } from "../config"
 import { CatalogComponent } from "@entities/catalog"
-import { useModel as useCatalogListModel } from "../model"
+import { useController as useCatalogListController } from "../model"
 
 import {
   CatalogFilter,
@@ -16,14 +16,15 @@ const CatalogList = () => {
   const {
     page,
     sort,
+    scrollListNode,
     computedPage,
     computedList,
     handleSort,
     handleSetPage,
     handleSetSortedList,
-  } = useCatalogListModel()
+  } = useCatalogListController()
   return (
-    <StyledComponent.Block>
+    <StyledComponent.Block ref={scrollListNode}>
       <StyledComponent.Actions>
         <Box.Flex $justify="space-between" $align="center">
           <CatalogFilter

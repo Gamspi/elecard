@@ -8,4 +8,5 @@ export const initialState: CatalogState = {
   currentItem: null,
   isItemLoading: false,
   treeList: null,
+  page: 1,
 }

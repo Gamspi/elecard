@@ -1,6 +1,6 @@
 import React, { memo, ReactElement, useState } from "react"
 import * as StyledComponent from "./style"
-import { Component as CatalogTreeItem } from "../catalogTreeListItem"
+import { Component as CatalogTreeItem } from "@entities/catalog/ui/catalogTreeListItem"
 import { TreeListItem } from "@entities/catalog/model/types"
 
 type Props = {

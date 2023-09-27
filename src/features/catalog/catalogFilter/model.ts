@@ -11,7 +11,7 @@ type Args = {
   list: CatalogItem[]
 }
 
-export const useModel = ({ setList, sort, setSort, list }: Args) => {
+export const useController = ({ setList, sort, setSort, list }: Args) => {
   const [isRevert, setIsRevert] = useState(false)
   const { isLoading } = useTypeSelector((state) => state.catalog)
   const sortedCatalogList = useMemo(() => {

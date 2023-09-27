@@ -1,10 +1,10 @@
 import React, { memo } from "react"
-import { useModel as useCatalogImagePopupModel } from "../model"
+import { useController as useCatalogImagePopupController } from "../model"
 import { style as StyledComponent } from "./style"
 import { Portal } from "@shared/ui"
 
 const CatalogImagePopup = () => {
-  const { handleToBack, currentItem } = useCatalogImagePopupModel()
+  const { handleToBack, currentItem } = useCatalogImagePopupController()
   return (
     <Portal>
       <StyledComponent.Container>

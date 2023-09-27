@@ -10,6 +10,7 @@ export interface CatalogState {
   isError: boolean
   currentItem: CatalogItem | null
   treeList: TreeListItem | null
+  page: number
 }
 
 export type TreeListItem = {

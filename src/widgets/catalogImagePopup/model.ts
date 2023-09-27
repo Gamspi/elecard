@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useAppDispatch, useTypeSelector } from "@shared/lib"
 import { CatalogModel } from "@entities/catalog"
 
-export const useModel = () => {
+export const useController = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { currentItem } = useTypeSelector((state) => state.catalog)

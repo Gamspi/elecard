@@ -6,7 +6,7 @@ type ModelType = {
   list: CatalogItem[]
 }
 
-export const useModel = ({ pageSize, list }: ModelType) => {
+export const useController = ({ pageSize, list }: ModelType) => {
   const totalPageCount = useMemo(() => {
     return Math.ceil(list.length / pageSize)
   }, [list.length, pageSize])

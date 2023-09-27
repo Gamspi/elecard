@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import { Pagination } from "@shared/ui"
-import { useModel } from "../model"
+import { useController as useCatalogPaginationController } from "../model"
 import { CatalogItem } from "@entities/catalog/model/types"
 
 type Props = {
@@ -15,7 +15,7 @@ const CatalogPagination = ({
   currentPage,
   list,
 }: Props) => {
-  const { totalPageCount } = useModel({ pageSize, list })
+  const { totalPageCount } = useCatalogPaginationController({ pageSize, list })
   return (
     <Pagination.Button
       totalPageCount={totalPageCount}

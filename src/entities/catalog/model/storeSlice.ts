@@ -51,6 +51,9 @@ const slice = createSlice({
   name: "catalog",
   initialState,
   reducers: {
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload
+    },
     updateDeletedList(state) {
       state.deletedList = getDeletedList()
     },
