@@ -1,47 +1,37 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
 import { Typography } from "@shared/ui"
 
-const Block = styled.article`
+const Block = styled.div`
   padding: 0.8rem 0.3rem;
-  margin: 0 0.3rem;
+  margin: 0 0.3rem 0 2rem;
   display: flex;
   position: relative;
   align-items: center;
   gap: 0.8rem;
   border-radius: 0.3rem;
-  min-width: 10rem;
-
-  @media (hover: hover) {
-    transition: background-color 0.15s ease-in;
-    &:hover {
-      background-color: ${({ theme }) => theme.color.blue}33;
-    }
-  }
+  max-width: fit-content;
 `
-const Action = styled(Link)`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0.8rem 0.6rem;
-  display: flex;
-`
-const Name = styled(Typography.Title)`
+const Property = styled(Typography.Text)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `
 
 const Img = styled.img`
-  width: 2rem;
-  height: 2rem;
+  width: 6.4rem;
+  height: 6.4rem;
   border-radius: 0.3rem;
+  object-fit: cover;
+`
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 `
 export const Style = {
-  Block,
-  Action,
-  Name,
   Img,
+  Body,
+  Block,
+  Property,
 }

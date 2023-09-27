@@ -1,9 +1,8 @@
 import React, { memo } from "react"
-import * as StyledComponent from "./style"
-import { quantityList } from "../config"
+import { style as StyledComponent } from "./style"
+import { QUANTITY } from "../config"
 import { CatalogComponent } from "@entities/catalog"
 import { useModel as useCatalogListModel } from "../model"
-import { Loader } from "@shared/ui"
 
 import {
   CatalogFilter,
@@ -11,55 +10,47 @@ import {
   CloseCatalogCard,
   RefreshCatalogList,
 } from "@features/catalog"
-import { CSSTransition } from "react-transition-group"
-import { Box, SelectBox } from "@shared/ui"
+import { Box } from "@shared/ui"
 
 const CatalogList = () => {
   const {
     page,
-    quantity,
-    isLoading,
+    sort,
+    computedPage,
     computedList,
-    scrollListNode,
+    handleSort,
     handleSetPage,
     handleSetSortedList,
-    handleSetQuantity,
   } = useCatalogListModel()
   return (
     <StyledComponent.Block>
-      <Loader isLoading={isLoading} />
-
       <StyledComponent.Actions>
-        <Box.Flex $gap={1.6} $justify="flex-end" $align="center">
-          <SelectBox
-            options={quantityList}
-            value={quantity}
-            onChange={handleSetQuantity}
+        <Box.Flex $justify="space-between" $align="center">
+          <CatalogFilter
+            list={computedList}
+            setList={handleSetSortedList}
+            sort={sort}
+            setSort={handleSort}
           />
           <RefreshCatalogList>Reset</RefreshCatalogList>
         </Box.Flex>
-
-        <CatalogFilter setList={handleSetSortedList} />
       </StyledComponent.Actions>
-
-      <StyledComponent.Scroll autoHide ref={scrollListNode}>
+      <StyledComponent.Wrapper>
         <StyledComponent.Content>
-          {computedList.map((item) => (
-            <CSSTransition timeout={300} key={item.id}>
-              <CatalogComponent.Card
-                to={`${item.id}`}
-                item={item}
-                action={<CloseCatalogCard id={item.id} />}
-              />
-            </CSSTransition>
+          {computedPage.map((item) => (
+            <CatalogComponent.Card
+              key={item.id}
+              item={item}
+              action={<CloseCatalogCard id={item.id} />}
+            />
           ))}
         </StyledComponent.Content>
-      </StyledComponent.Scroll>
-
+      </StyledComponent.Wrapper>
       <StyledComponent.Pagination>
         <CatalogPagination
+          list={computedList}
           currentPage={page}
-          pageSize={quantity}
+          pageSize={QUANTITY}
           onChange={handleSetPage}
         />
       </StyledComponent.Pagination>

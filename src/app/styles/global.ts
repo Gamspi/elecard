@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: calc(100vw / ${BreakpointEnum.MOBILE} * 10);
+    font-size: 10px;
     @media (min-width: ${BreakpointEnum.TABLET}px) {
       font-size: calc(100vw / ${BreakpointEnum.TABLET} * 10);
     }
@@ -28,9 +28,6 @@ export const GlobalStyle = createGlobalStyle`
       font-size: calc(100vw / ${BreakpointEnum.DESKTOP} * 10);
     }
     @media (min-width: ${BreakpointEnum.EXTRA_LARGE}px) {
-      font-size: calc(100vw / ${BreakpointEnum.EXTRA_LARGE} * 10);
-    }
-    @media (min-width: ${BreakpointEnum.MAX}px) {
       font-size: 10px;
     }
   }

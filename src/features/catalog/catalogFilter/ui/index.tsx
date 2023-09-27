@@ -4,9 +4,13 @@ import { filters } from "@features/catalog/catalogFilter/config"
 import { useModel as useCatalogFilterModel } from "@features/catalog/catalogFilter/model"
 import { style as StyledComponent } from "./style"
 import { CatalogItem } from "@entities/catalog/model/types"
+import { CatalogSortEnum } from "@features/catalog/catalogFilter/lib/enum"
 
 type Props = {
   setList: (list: CatalogItem[]) => void
+  sort: CatalogSortEnum
+  setSort: (value: CatalogSortEnum) => void
+  list: CatalogItem[]
 }
 const CatalogFilter = (props: Props) => {
   const { sort, handleChangeSortValue, isRevert } = useCatalogFilterModel(props)

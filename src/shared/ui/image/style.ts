@@ -54,6 +54,9 @@ const Content = styled.img<StyledImageProps>`
   ${(props) =>
     props.$objectFit === "cover" &&
     css`
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
     `};

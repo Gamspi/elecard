@@ -4,6 +4,7 @@ import { dateFormatter } from "@shared/lib"
 import { getCatalogItemName } from "@entities/catalog/lib/getCatalogItemName"
 import { fileSizeFormatter } from "@shared/lib/formatters/fileSizeFormatter"
 import { checkProperty } from "@shared/lib/helpers/checkProperty"
+import { CatalogItem, TreeListItem } from "@entities/catalog/model/types"
 
 /**
  * Функция преобразует элемент масива каталога, полученный с запроса
@@ -30,5 +31,12 @@ export function catalogItemConverter(item: ResponseCatalogItem, id: number) {
     timestamp,
     filesize,
     displayFileSize,
+  }
+}
+export function catalogTreeConverter(item: CatalogItem): TreeListItem {
+  return {
+    id: item.id,
+    name: item.name,
+    item,
   }
 }

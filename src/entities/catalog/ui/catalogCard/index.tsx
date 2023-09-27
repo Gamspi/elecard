@@ -1,30 +1,36 @@
-import React, { ComponentProps, memo, ReactElement } from "react"
+import React, { memo, ReactElement } from "react"
 import * as StyledComponent from "./style"
 
 import { Image, Typography } from "@shared/ui"
 import { CatalogItem } from "@entities/catalog/model/types"
-import { Link } from "react-router-dom"
 
 type Props = {
   item: CatalogItem
   action?: ReactElement
-} & ComponentProps<typeof Link>
+}
 
-const CatalogCard = ({ item, action, ...props }: Props) => {
+const CatalogCard = ({ item, action }: Props) => {
   return (
     <StyledComponent.Block>
-      <StyledComponent.Container {...props}>
+      <StyledComponent.Container>
         <StyledComponent.Header>
           <StyledComponent.ImageContainer>
             <Image src={item.image} alt={`${item.id}`} $objectFit="cover" />
           </StyledComponent.ImageContainer>
         </StyledComponent.Header>
         <StyledComponent.Body>
-          <StyledComponent.Name level={5}>{item.name}</StyledComponent.Name>
-          <StyledComponent.Footer>
-            <Typography.Text>{item.date}</Typography.Text>
-            <Typography.Text>{item.displayFileSize}</Typography.Text>
-          </StyledComponent.Footer>
+          <Typography.Text>
+            <b>Name:</b> {item.name}
+          </Typography.Text>
+          <Typography.Text>
+            <b>Category:</b> {item.category}
+          </Typography.Text>
+          <Typography.Text>
+            <b>Date:</b> {item.date}
+          </Typography.Text>
+          <Typography.Text>
+            <b>Size:</b> {item.displayFileSize}
+          </Typography.Text>
         </StyledComponent.Body>
       </StyledComponent.Container>
       {action && <StyledComponent.Action>{action}</StyledComponent.Action>}

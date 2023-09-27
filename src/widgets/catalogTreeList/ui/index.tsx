@@ -6,15 +6,9 @@ import { useModel as useTreeListModel } from "@widgets/catalogTreeList/model"
 
 const CatalogTreeList = () => {
   const { treeList } = useTreeListModel()
-  return (
+  return !treeList ? null : (
     <ul>
-      {Object.entries(treeList).map(([_, item]) => (
-        <TreeListContent
-          key={item.id}
-          item={item}
-          button={<TreeListButton />}
-        />
-      ))}
+      <TreeListContent item={treeList} button={<TreeListButton />} />
     </ul>
   )
 }

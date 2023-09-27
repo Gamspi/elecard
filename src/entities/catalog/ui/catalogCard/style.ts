@@ -1,21 +1,10 @@
 import styled from "styled-components"
-import { Typography } from "@shared/ui"
-import { Link } from "react-router-dom"
 
-const Block = styled.article`
+const Block = styled.div`
   word-break: break-all;
-  width: 100%;
-  height: 100%;
   border: 1px solid ${({ theme }) => theme.color.gray};
   border-radius: 2.4rem;
   position: relative;
-
-  @media (hover: hover) {
-    transition: color 0.15s ease-in;
-    &:hover {
-      color: ${({ theme }) => theme.color.blue};
-    }
-  }
 
   &.enter {
     opacity: 0;
@@ -66,13 +55,9 @@ const Action = styled.div`
   top: 1rem;
   right: 1rem;
 `
-const Name = styled(Typography.Title)`
-  text-transform: capitalize;
-  flex-grow: 1;
-`
-const Container = styled(Link)`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
 `
-export { ImageContainer, Block, Header, Body, Action, Footer, Name, Container }
+export { ImageContainer, Block, Header, Body, Action, Footer, Container }

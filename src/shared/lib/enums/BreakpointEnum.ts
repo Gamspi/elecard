@@ -6,5 +6,6 @@ export enum BreakpointEnum {
   TABLET = 640,
   DESKTOP = 1024,
   EXTRA_LARGE = 1360,
+  PRE_MAX = 1680,
   MAX = 1920,
 }

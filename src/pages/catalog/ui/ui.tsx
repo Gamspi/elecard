@@ -1,24 +1,29 @@
 import React, { memo } from "react"
-import { CatalogList } from "@widgets/catalogList"
 import { style as StyledComponent } from "./style"
-import { CatalogTreeList } from "@widgets/catalogTreeList"
 import { Outlet } from "react-router-dom"
-import { Typography } from "@shared/ui"
+import { Loader, Page, Typography } from "@shared/ui"
+import { useController } from "../controller"
 
 const Catalog = () => {
+  const { isLoading } = useController()
   return (
-    <>
-      <StyledComponent.Content>
-        <Typography.Title>Catalog</Typography.Title>
-        <StyledComponent.TreeList autoHide>
-          <CatalogTreeList />
-        </StyledComponent.TreeList>
-        <StyledComponent.List>
-          <CatalogList />
-        </StyledComponent.List>
-      </StyledComponent.Content>
-      <Outlet />
-    </>
+    <Page>
+      <Loader isLoading={isLoading} />
+      <StyledComponent.Container>
+        <StyledComponent.Header>
+          <Typography.Title>Catalog</Typography.Title>
+          <StyledComponent.Links>
+            <StyledComponent.LinkItem to="cards">
+              Cards
+            </StyledComponent.LinkItem>
+            <StyledComponent.LinkItem to="tree">Tree</StyledComponent.LinkItem>
+          </StyledComponent.Links>
+        </StyledComponent.Header>
+        <StyledComponent.Body>
+          <Outlet />
+        </StyledComponent.Body>
+      </StyledComponent.Container>
+    </Page>
   )
 }
 

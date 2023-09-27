@@ -6,12 +6,14 @@ import { sortCatalogList } from "@features/catalog/catalogFilter/lib/helpers/sor
 
 type Args = {
   setList: (list: CatalogItem[]) => void
+  sort: CatalogSortEnum
+  setSort: (value: CatalogSortEnum) => void
+  list: CatalogItem[]
 }
 
-export const useModel = ({ setList }: Args) => {
-  const [sort, setSort] = useState(CatalogSortEnum.CATEGORY)
+export const useModel = ({ setList, sort, setSort, list }: Args) => {
   const [isRevert, setIsRevert] = useState(false)
-  const { isLoading, list } = useTypeSelector((state) => state.catalog)
+  const { isLoading } = useTypeSelector((state) => state.catalog)
   const sortedCatalogList = useMemo(() => {
     let resultList = sortCatalogList(list, sort)
     if (isRevert) resultList = [...resultList.reverse()]

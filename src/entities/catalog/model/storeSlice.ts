@@ -1,8 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { initialState } from "./initialState"
 import { elecard } from "@shared/api"
-import { catalogItemConverter } from "@entities/catalog/lib/converter"
-import { CatalogItem } from "@entities/catalog/model/types"
+import {
+  catalogItemConverter,
+  catalogTreeConverter,
+} from "@entities/catalog/lib/converters"
+import { CatalogItem, TreeListItem } from "@entities/catalog/model/types"
 import { DELETE_CATALOG_KEY } from "@entities/catalog/config"
 import { getDeletedList } from "@entities/catalog/lib/getDeletedList"
 import { RootState } from "@app/store"
@@ -48,6 +51,9 @@ const slice = createSlice({
   name: "catalog",
   initialState,
   reducers: {
+    updateDeletedList(state) {
+      state.deletedList = getDeletedList()
+    },
     setList: (state, action: PayloadAction<CatalogItem[]>) => {
       state.isError = false
       state.list = action.payload
@@ -55,11 +61,12 @@ const slice = createSlice({
     setCurrentItem: (state, action: PayloadAction<CatalogItem | null>) => {
       state.currentItem = action.payload
     },
-    refreshCatalogList: () => {
+    refreshCatalogList: (state) => {
+      state.deletedList = []
       localStorage.setItem(DELETE_CATALOG_KEY, "")
     },
     deleteCatalogItem: (state, action: PayloadAction<CatalogItem["id"]>) => {
-      state.list = state.list.filter((item) => item.id !== action.payload)
+      state.deletedList = [...state.deletedList, action.payload]
       const deletedList = getDeletedList()
       localStorage.setItem(
         DELETE_CATALOG_KEY,
@@ -74,19 +81,31 @@ const slice = createSlice({
       })
       .addCase(getCatalogList.fulfilled, (state, action) => {
         if (!(action.payload && Array.isArray(action.payload))) return
-        const deletedList = getDeletedList()
-        state.list = action.payload.reduce<CatalogItem[]>(
-          (acc, item, index) => {
-            if (item) {
-              const elem = catalogItemConverter(item, index)
-              if (!deletedList.includes(elem.id)) {
-                acc.push(elem)
+        const currentList: CatalogItem[] = []
+        const treeList: { [key: string]: TreeListItem } = {}
+        action.payload.forEach((item, index) => {
+          if (item) {
+            const currentItem = catalogItemConverter(item, index)
+            currentList.push(currentItem)
+            const category = treeList[currentItem.category]
+            const treeItem = catalogTreeConverter(currentItem)
+            if (category && category.list) {
+              category.list.push(treeItem)
+            } else {
+              treeList[item.category] = {
+                list: [treeItem],
+                id: item.category,
+                name: item.category,
               }
             }
-            return acc
-          },
-          [],
-        )
+          }
+        })
+        state.treeList = {
+          id: "root",
+          name: "root",
+          list: Object.entries(treeList).map(([_, item]) => item),
+        }
+        state.list = currentList
         state.isLoading = false
         state.isError = false
       })

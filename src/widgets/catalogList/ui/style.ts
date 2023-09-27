@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import { BreakpointEnum } from "@shared/lib"
-import Scrollbars from "react-custom-scrollbars-2"
-import { TransitionGroup } from "react-transition-group"
 
 const Block = styled.section`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  height: 100%;
+  min-height: 100%;
+  flex-grow: 1;
+
   @media (min-width: ${BreakpointEnum.TABLET}px) {
     gap: 1.2rem;
   }
@@ -15,10 +15,10 @@ const Block = styled.section`
     gap: 1.6rem;
   }
 `
-const Content = styled(TransitionGroup)`
+const Content = styled.div`
   display: grid;
   gap: 1.6rem;
-  padding: 0 1.2rem 1.6rem;
+  grid-auto-rows: auto;
 
   @media (min-width: ${BreakpointEnum.TABLET}px) {
     grid-template-columns: repeat(2, 1fr);
@@ -27,13 +27,23 @@ const Content = styled(TransitionGroup)`
     grid-template-columns: repeat(3, 1fr);
     gap: 2.4rem;
   }
+  @media (min-width: ${BreakpointEnum.EXTRA_LARGE}px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: ${BreakpointEnum.PRE_MAX}px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (min-width: ${BreakpointEnum.MAX}px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 `
 const Pagination = styled.aside`
   display: flex;
   justify-content: center;
 `
-const Scroll = styled(Scrollbars)`
-  width: 100%;
+const Wrapper = styled.div`
+  padding: 0 0 1.6rem;
+  flex-grow: 1;
 `
 const Actions = styled.div`
   padding: 0 1.2rem;
@@ -41,4 +51,4 @@ const Actions = styled.div`
   gap: 1.6rem;
   align-items: center;
 `
-export { Block, Content, Pagination, Actions, Scroll }
+export const style = { Block, Content, Pagination, Actions, Wrapper }

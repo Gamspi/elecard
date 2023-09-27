@@ -9,7 +9,7 @@ export const useModel = () => {
   const { currentItem } = useTypeSelector((state) => state.catalog)
   const { id } = useParams()
   const handleToBack = () => {
-    navigate("/catalog")
+    navigate("/catalog/tree")
     dispatch(CatalogModel.actions.setCurrentItem(null))
   }
   const fetchData = async () => {
@@ -17,7 +17,7 @@ export const useModel = () => {
       if (!id) throw new Error("id isn't valid")
       void dispatch(CatalogModel.actions.getCatalogItemById(+id))
     } catch (e) {
-      navigate("/catalog")
+      navigate("/catalog/tree")
     }
   }
   useEffect(() => {

@@ -1,9 +1,10 @@
 import React, { lazy, memo, Suspense } from "react"
-import { Routes, Route } from "react-router-dom"
-import { Main } from "@pages/main"
+import { Routes, Route, Navigate } from "react-router-dom"
 import { Catalog } from "@pages/catalog"
 import { CatalogDetail } from "@pages/catalogDetail"
 import { NotFoundPage } from "@pages/notFoundPage"
+import { CatalogCardPage } from "@pages/catalogCardPage"
+import { CatalogTreePage } from "@pages/catalogTreePage"
 
 const Layout = lazy(() => import("../layout/index"))
 const AppRouter = () => {
@@ -17,14 +18,7 @@ const AppRouter = () => {
           </Suspense>
         }
       >
-        <Route
-          index
-          element={
-            <Suspense>
-              <Main />
-            </Suspense>
-          }
-        />
+        <Route index element={<Navigate to="catalog" />} />
         <Route
           path="catalog"
           element={
@@ -33,14 +27,32 @@ const AppRouter = () => {
             </Suspense>
           }
         >
+          <Route index element={<Navigate to="cards" />} />
           <Route
-            path=":id"
+            path="cards"
             element={
               <Suspense>
-                <CatalogDetail />
+                <CatalogCardPage />
               </Suspense>
             }
           />
+          <Route
+            path="tree"
+            element={
+              <Suspense>
+                <CatalogTreePage />
+              </Suspense>
+            }
+          >
+            <Route
+              path=":id"
+              element={
+                <Suspense>
+                  <CatalogDetail />
+                </Suspense>
+              }
+            />
+          </Route>
         </Route>
         <Route
           path="*"

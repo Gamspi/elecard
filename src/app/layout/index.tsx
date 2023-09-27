@@ -14,7 +14,7 @@ const AppLayout = () => {
       <StyledComponent.AppWrapper>
         <Header />
         <StyledComponent.Main>
-          <StyledComponent.Container autoHide>
+          <StyledComponent.Container>
             <Outlet />
           </StyledComponent.Container>
         </StyledComponent.Main>

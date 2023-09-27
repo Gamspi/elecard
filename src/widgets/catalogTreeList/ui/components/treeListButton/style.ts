@@ -12,14 +12,14 @@ const Block = styled.button<StyledBlockProps>`
   padding: 0.8rem 0.6rem;
   text-transform: capitalize;
   gap: 0.6rem;
-
+  align-items: center;
   &:before,
   &:after {
     grid-area: 1/1/1/1;
     content: "";
     display: block;
-    height: 1.6rem;
-    width: 1.6rem;
+    height: 3rem;
+    width: 3rem;
   }
 
   &:before {

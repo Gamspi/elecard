@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import Scrollbars from "react-custom-scrollbars-2"
 
 const styledMain = styled.div`
   height: 100%;
@@ -7,7 +6,7 @@ const styledMain = styled.div`
   overflow: auto;
 `
 
-const styledWrapper = styled(Scrollbars)`
+const styledWrapper = styled.div`
   max-width: 100vw;
   overflow-x: hidden;
   grid-area: 1/1/1/1;

@@ -6,8 +6,9 @@ type StyledChildrenProps = {
 const Item = styled.li``
 const Children = styled.ul<StyledChildrenProps>`
   overflow: hidden;
+  max-width: fit-content;
   max-height: 0;
-  margin-left: 1.4rem;
+  margin-left: 2rem;
   border-left: 1px solid ${({ theme }) => theme.color.blue};
   ${(props) =>
     props.$isOpen &&

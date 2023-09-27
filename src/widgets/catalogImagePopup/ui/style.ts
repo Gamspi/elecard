@@ -24,11 +24,11 @@ const Button = styled(UiButton.Icon)`
   position: absolute;
   top: 3.2rem;
   right: 3.2rem;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   @media (min-width: ${BreakpointEnum.TABLET}px) {
-    width: 8rem;
-    height: 8rem;
+    width: 4rem;
+    height: 4rem;
   }
 `
 const styledImage = styled(Image)`

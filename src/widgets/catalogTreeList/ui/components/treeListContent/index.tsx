@@ -1,7 +1,7 @@
 import React, { memo, ReactElement, useState } from "react"
-import { TreeListItem } from "@shared/ui/treeList/lib"
 import * as StyledComponent from "./style"
 import { Component as CatalogTreeItem } from "../catalogTreeListItem"
+import { TreeListItem } from "@entities/catalog/model/types"
 
 type Props = {
   item: TreeListItem
@@ -18,26 +18,20 @@ const TreeListContent = ({ item, button }: Props) => {
   })
   if (item.list?.length) {
     childrenList = (
-      <StyledComponent.Children $isOpen={isOpen}>
+      <>
         {item.list.map((i) => (
           <Component item={i} key={i.id} button={button} />
         ))}
-      </StyledComponent.Children>
+      </>
     )
   }
 
   return (
     <StyledComponent.Item>
-      {item.list?.length ? (
-        ButtonElement
-      ) : (
-        <CatalogTreeItem
-          name={item.name}
-          src={item.src || ""}
-          to={`${item.id}`}
-        />
-      )}
-      {childrenList}
+      {ButtonElement}
+      <StyledComponent.Children $isOpen={isOpen} as={item.item ? "div" : ""}>
+        {childrenList || <CatalogTreeItem item={item.item} to={`${item.id}`} />}
+      </StyledComponent.Children>
     </StyledComponent.Item>
   )
 }

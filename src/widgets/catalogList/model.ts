@@ -1,56 +1,54 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { useAppDispatch, useTypeSelector } from "@shared/lib"
-import { QUANTITY } from "@widgets/catalogList/config"
-import { CatalogModel } from "@entities/catalog"
+import { useTypeSelector } from "@shared/lib"
+import { DEFAULT_PAGE, QUANTITY } from "@widgets/catalogList/config"
+
 import { CatalogItem } from "@entities/catalog/model/types"
-import Scrollbars from "react-custom-scrollbars-2"
+import { CatalogSortEnum } from "@features/catalog/catalogFilter/lib/enum"
 
 export const useModel = () => {
-  const scrollListNode = useRef<Scrollbars>(null)
-  const dispatch = useAppDispatch()
+  const [sort, setSort] = useState(CatalogSortEnum.CATEGORY)
+  const scrollListNode = useRef<HTMLElement>(null)
+
   const [sortedList, setSortedList] = useState<CatalogItem[]>([])
-  const [quantity, setQuantity] = useState(QUANTITY)
-  const { isLoading } = useTypeSelector((state) => state.catalog)
-  const [page, setPage] = useState(1)
-  const scrollListToTop = () => {
-    scrollListNode.current?.scrollTop(0)
-  }
+  const { list, deletedList } = useTypeSelector((state) => state.catalog)
+  const [page, setPage] = useState(DEFAULT_PAGE)
   const handleSetPage = (page: number) => {
     setPage(page)
-    scrollListToTop()
   }
   const handleSetSortedList = (value: CatalogItem[]) => {
     setSortedList(value)
   }
+
   const computedList = useMemo(() => {
-    const from = quantity * (page - 1)
-    const to = quantity * page
+    return list.filter((item) => !deletedList.includes(item.id))
+  }, [deletedList, list])
+
+  const computedPage = useMemo(() => {
+    const from = QUANTITY * (page - DEFAULT_PAGE)
+    const to = QUANTITY * page
     return sortedList.slice(from, to)
-  }, [quantity, sortedList, page])
+  }, [sortedList, page])
 
-  const fetchData = async () => {
-    await dispatch(CatalogModel.actions.getCatalogList())
-  }
-
-  const handleSetQuantity = (value: number | string) => {
-    setQuantity(+value)
+  const handleSort = (value: CatalogSortEnum) => {
+    setSort(value)
+    setPage(DEFAULT_PAGE)
   }
   useEffect(() => {
-    setPage(1)
-    scrollListToTop()
-  }, [sortedList])
+    if (!computedPage.length && page > 1) setPage((prev) => prev - 1)
+  }, [computedPage])
+
   useEffect(() => {
-    void fetchData()
-  }, [])
+    if (!deletedList.length && page !== DEFAULT_PAGE) setPage(DEFAULT_PAGE)
+  }, [deletedList])
 
   return {
     page,
-    quantity,
-    isLoading,
+    sort,
     computedList,
+    computedPage,
     scrollListNode,
+    handleSort,
     handleSetPage,
-    handleSetQuantity,
     handleSetSortedList,
   }
 }
