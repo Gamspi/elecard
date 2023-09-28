@@ -1,13 +1,13 @@
 import React, { memo } from "react"
 import { style as StyledComponent } from "./style"
-import { Loader, Page, Typography } from "@shared/ui"
+import { Loader, Typography } from "@shared/ui"
 import { useController as useCatalogController } from "../controller"
 import { Outlet } from "react-router-dom"
 
 const Catalog = () => {
   const { isShowLoader, tab, tabArray } = useCatalogController()
   return (
-    <Page>
+    <StyledComponent.Page>
       <Loader isLoading={isShowLoader} />
       <StyledComponent.Container>
         <StyledComponent.Header>
@@ -20,6 +20,7 @@ const Catalog = () => {
             ))}
           </StyledComponent.Links>
         </StyledComponent.Header>
+
         <StyledComponent.Body>
           {tabArray.map(([_, item]) => (
             <StyledComponent.Tab $isActive={item.path === tab} key={item.path}>
@@ -29,7 +30,7 @@ const Catalog = () => {
         </StyledComponent.Body>
       </StyledComponent.Container>
       <Outlet />
-    </Page>
+    </StyledComponent.Page>
   )
 }
 

@@ -5,15 +5,10 @@ const Block = styled.section`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  min-height: 100%;
+  max-height: 100%;
+  height: 100%;
+  overflow: hidden;
   flex-grow: 1;
-
-  @media (min-width: ${BreakpointEnum.TABLET}px) {
-    gap: 1.2rem;
-  }
-  @media (min-width: ${BreakpointEnum.DESKTOP}px) {
-    gap: 1.6rem;
-  }
 `
 const Content = styled.div`
   display: grid;
@@ -42,8 +37,9 @@ const Pagination = styled.aside`
   justify-content: center;
 `
 const Wrapper = styled.div`
-  padding: 0 0 1.6rem;
+  padding: 0 0.8rem 1.6rem;
   flex-grow: 1;
+  overflow-y: auto;
 `
 const Actions = styled.div`
   padding: 0 1.2rem;

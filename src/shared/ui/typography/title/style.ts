@@ -2,12 +2,12 @@ import styled, { css } from "styled-components"
 import { BreakpointEnum } from "@shared/lib/enums/BreakpointEnum"
 
 const h1 = css`
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 500;
-  line-height: 5.4rem;
+  line-height: 3.4rem;
   @media (min-width: ${BreakpointEnum.DESKTOP}px) {
-    font-size: 5.6rem;
-    line-height: 6.8rem;
+    font-size: 3.6rem;
+    line-height: 3.8rem;
   }
 `
 const h3 = css`

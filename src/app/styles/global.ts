@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     border: none;
+    scrollbar-color: ${({ theme }) => theme.color.blue};
   }
 
   body {
@@ -66,6 +67,20 @@ export const GlobalStyle = createGlobalStyle`
   li {
     list-style-type: none;
   }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.color.blue};
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+
+  }
+  
+
+
 
   .portal {
     position: relative;

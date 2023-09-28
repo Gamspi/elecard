@@ -68,17 +68,6 @@ const List = styled.div`
   max-height: 10rem;
   width: 100%;
   overflow-y: auto;
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.color.blue};
-  }
-
-  &::-webkit-scrollbar {
-    width: 6px !important;
-    height: 6px !important;
-  }
-
-  scrollbar-color: ${({ theme }) => theme.color.blue};
 `
 export const style = {
   Item,

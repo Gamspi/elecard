@@ -24,7 +24,7 @@ const CatalogList = () => {
     handleSetSortedList,
   } = useCatalogListController()
   return (
-    <StyledComponent.Block ref={scrollListNode}>
+    <StyledComponent.Block>
       <StyledComponent.Actions>
         <Box.Flex
           $justify="space-between"
@@ -42,7 +42,7 @@ const CatalogList = () => {
         </Box.Flex>
       </StyledComponent.Actions>
       <StyledComponent.Wrapper>
-        <StyledComponent.Content>
+        <StyledComponent.Content ref={scrollListNode}>
           {computedPage.map((item) => (
             <CatalogComponent.Card
               key={item.id}

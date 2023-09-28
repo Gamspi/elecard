@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { BreakpointEnum } from "@shared/lib"
 
 export const StyledButton = styled.button`
-  font-size: 2.4rem;
+  font-size: 1.4rem;
   padding: 0.8rem;
   border: 1px solid transparent;
   color: ${({ theme }) => theme.color.blue};
@@ -14,6 +14,7 @@ export const StyledButton = styled.button`
 
   @media (min-width: ${BreakpointEnum.EXTRA_LARGE}px) {
     padding: 0.8rem 1.2rem;
+    font-size: 1.8rem;
   }
 
   &:focus {

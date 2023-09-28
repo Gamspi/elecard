@@ -12,15 +12,13 @@ const Block = styled.div`
   grid-auto-columns: 1fr;
 `
 const Button = styled.button<ButtonProps>`
-  font-size: 2.4rem;
+  font-size: 1.2rem;
   padding: 0.6rem 0.6rem;
   border: 1px solid transparent;
   color: ${({ theme }) => theme.color.blue};
   cursor: pointer;
   background-color: ${({ theme }) => theme.color.blue}19;
-  border-radius: 1.2rem;
-  transition: border-color 0.15s ease-in, background-color 0.15s ease-in,
-    color 0.15s ease-in, opacity 0.15s ease-in;
+  border-radius: 50%;
   display: none;
 
   &:last-child,
@@ -31,6 +29,7 @@ const Button = styled.button<ButtonProps>`
   ${(props) =>
     props.$isActive &&
     css`
+      display: block;
       pointer-events: none;
       background-color: ${({ theme }) => theme.color.blue};
       color: ${({ theme }) => theme.color.white};

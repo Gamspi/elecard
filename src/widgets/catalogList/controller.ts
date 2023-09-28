@@ -8,7 +8,7 @@ import { CatalogSortEnum } from "@features/catalog/catalogFilter/lib/enum"
 export const useController = () => {
   const [sort, setSort] = useState(CatalogSortEnum.CATEGORY)
   const [page, setPage] = useState(DEFAULT_PAGE)
-  const scrollListNode = useRef<HTMLElement>(null)
+  const scrollListNode = useRef<HTMLDivElement>(null)
 
   const [sortedList, setSortedList] = useState<CatalogItem[]>([])
   const { list, deletedList } = useTypeSelector((state) => state.catalog)

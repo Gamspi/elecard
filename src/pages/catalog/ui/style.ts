@@ -1,13 +1,16 @@
 import styled, { css } from "styled-components"
-import { Container } from "@shared/ui"
+import { Container, Page } from "@shared/ui"
 import { NavLink } from "react-router-dom"
 
 const styledContainer = styled(Container)`
   min-height: 100%;
-  position: relative;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+`
+const styledPage = styled(Page)`
+  max-height: 100%;
+  overflow: hidden;
 `
 const Body = styled.div`
   min-height: 100%;
@@ -23,9 +26,11 @@ const Tab = styled.div<TapProps>`
   visibility: hidden;
   max-height: 0;
   overflow: hidden;
+
   ${(props) =>
     props.$isActive &&
     css`
+      overflow-y: auto;
       flex-direction: column;
       visibility: visible;
       max-height: inherit;
@@ -36,6 +41,7 @@ const Header = styled.div`
   grid-template-columns: auto 1fr;
   align-items: center;
   width: 100%;
+  padding-bottom: 0.8rem;
 `
 const Links = styled.div`
   justify-self: center;
@@ -86,4 +92,5 @@ export const style = {
   Links,
   LinkItem,
   Container: styledContainer,
+  Page: styledPage,
 }
