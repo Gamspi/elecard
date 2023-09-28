@@ -2,7 +2,6 @@ import React, { memo } from "react"
 import { style as StyledComponent } from "./style"
 import { Loader, Page, Typography } from "@shared/ui"
 import { useController as useCatalogController } from "../controller"
-import { tabs } from "@pages/catalog/config"
 import { Outlet } from "react-router-dom"
 
 const Catalog = () => {

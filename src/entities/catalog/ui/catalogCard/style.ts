@@ -63,7 +63,7 @@ const Container = styled.div`
 `
 const Property = styled(Typography.Text)`
   display: flex;
-  gap: 0.8rem;
+  gap: 0.4rem;
   b {
     flex-shrink: 0;
   }

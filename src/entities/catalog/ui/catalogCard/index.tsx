@@ -20,16 +20,20 @@ const CatalogCard = ({ item, action }: Props) => {
         </StyledComponent.Header>
         <StyledComponent.Body>
           <StyledComponent.Property>
-            <b>Name:</b> {item.name}
+            <b>Name:</b>
+            {item.name}
           </StyledComponent.Property>
           <StyledComponent.Property>
-            <b>Category:</b> {item.category}
+            <b>Category:</b>
+            {item.category}
           </StyledComponent.Property>
           <StyledComponent.Property>
-            <b>Date:</b> {item.date}
+            <b>Date:</b>
+            {item.date}
           </StyledComponent.Property>
           <StyledComponent.Property>
-            <b>Size:</b> {item.displayFileSize}
+            <b>Size:</b>
+            {item.displayFileSize}
           </StyledComponent.Property>
         </StyledComponent.Body>
       </StyledComponent.Container>
