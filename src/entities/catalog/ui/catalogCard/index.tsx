@@ -1,7 +1,7 @@
 import React, { memo, ReactElement } from "react"
 import * as StyledComponent from "./style"
 
-import { Image, Typography } from "@shared/ui"
+import { Image } from "@shared/ui"
 import { CatalogItem } from "@entities/catalog/model/types"
 
 type Props = {
@@ -19,18 +19,18 @@ const CatalogCard = ({ item, action }: Props) => {
           </StyledComponent.ImageContainer>
         </StyledComponent.Header>
         <StyledComponent.Body>
-          <Typography.Text>
+          <StyledComponent.Property>
             <b>Name:</b> {item.name}
-          </Typography.Text>
-          <Typography.Text>
+          </StyledComponent.Property>
+          <StyledComponent.Property>
             <b>Category:</b> {item.category}
-          </Typography.Text>
-          <Typography.Text>
+          </StyledComponent.Property>
+          <StyledComponent.Property>
             <b>Date:</b> {item.date}
-          </Typography.Text>
-          <Typography.Text>
+          </StyledComponent.Property>
+          <StyledComponent.Property>
             <b>Size:</b> {item.displayFileSize}
-          </Typography.Text>
+          </StyledComponent.Property>
         </StyledComponent.Body>
       </StyledComponent.Container>
       {action && <StyledComponent.Action>{action}</StyledComponent.Action>}

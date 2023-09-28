@@ -12,6 +12,7 @@ export const useController = () => {
     await dispatch(CatalogModel.actions.getCatalogList())
     dispatch(CatalogModel.actions.updateDeletedList())
   }
+  const tabArray = [...tabs]
   const isShowLoader = useMemo(() => {
     return isLoading && !id
   }, [id, isLoading])
@@ -24,6 +25,7 @@ export const useController = () => {
   }, [])
   return {
     tab,
+    tabArray,
     isShowLoader,
   }
 }

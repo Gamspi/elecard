@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Typography } from "@shared/ui"
 
 const Block = styled.div`
   word-break: break-all;
@@ -60,4 +61,20 @@ const Container = styled.div`
   flex-direction: column;
   height: 100%;
 `
-export { ImageContainer, Block, Header, Body, Action, Footer, Container }
+const Property = styled(Typography.Text)`
+  display: flex;
+  gap: 0.8rem;
+  b {
+    flex-shrink: 0;
+  }
+`
+export {
+  ImageContainer,
+  Block,
+  Header,
+  Body,
+  Action,
+  Footer,
+  Container,
+  Property,
+}
