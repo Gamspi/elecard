@@ -1,8 +1,9 @@
-import React, { memo } from "react"
-import { PropType } from "@shared/ui/box/flex/types"
+import React, { ComponentProps, memo, ReactNode } from "react"
 import { StyledFlexBox } from "@shared/ui/box/flex/style"
-
-const FlexBox = (props: PropType) => {
+type Props = {
+  children?: ReactNode
+} & ComponentProps<typeof StyledFlexBox>
+const FlexBox = (props: Props) => {
   return <StyledFlexBox {...props} />
 }
 

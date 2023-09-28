@@ -2,7 +2,7 @@ import React, { memo } from "react"
 import { style as StyledComponent } from "./style"
 import { QUANTITY } from "../config"
 import { CatalogComponent } from "@entities/catalog"
-import { useController as useCatalogListController } from "../model"
+import { useController as useCatalogListController } from "../controller"
 
 import {
   CatalogFilter,
@@ -26,7 +26,12 @@ const CatalogList = () => {
   return (
     <StyledComponent.Block ref={scrollListNode}>
       <StyledComponent.Actions>
-        <Box.Flex $justify="space-between" $align="center">
+        <Box.Flex
+          $justify="space-between"
+          $align="center"
+          $gap={1.6}
+          $wrap="wrap"
+        >
           <CatalogFilter
             list={computedList}
             setList={handleSetSortedList}

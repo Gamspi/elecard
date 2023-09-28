@@ -11,7 +11,10 @@ import { CatalogItem, TreeListItem } from "@entities/catalog/model/types"
  * @param item - элемент каталога полученный с запроса
  * @param id Хардкод, индекс, используется как id. сделанный для нормальной работы приложения, по хорошеме получать из запроса
  */
-export function catalogItemConverter(item: ResponseCatalogItem, id: number) {
+export function catalogItemConverter(
+  item: ResponseCatalogItem,
+  id: number | string,
+) {
   const filesize = checkProperty(item, "filesize")
   const timestamp = checkProperty(item, "timestamp")
   const category = checkProperty(item, "category")

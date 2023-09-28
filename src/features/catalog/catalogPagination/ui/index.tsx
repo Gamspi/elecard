@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import { Pagination } from "@shared/ui"
-import { useController as useCatalogPaginationController } from "../model"
+import { useController as useCatalogPaginationController } from "../controller"
 import { CatalogItem } from "@entities/catalog/model/types"
 
 type Props = {

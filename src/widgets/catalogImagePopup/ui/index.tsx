@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { useController as useCatalogImagePopupController } from "../model"
+import { useController as useCatalogImagePopupController } from "../controller"
 import { style as StyledComponent } from "./style"
 import { Portal } from "@shared/ui"
 

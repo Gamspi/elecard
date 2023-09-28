@@ -2,15 +2,19 @@ import { catalogItemConverter } from "@entities/catalog/lib/converters"
 
 export type CatalogItem = ReturnType<typeof catalogItemConverter>
 
+export interface CatalogErrors {
+  fetchList: boolean
+  fetchItem: boolean
+}
+
 export interface CatalogState {
   list: CatalogItem[]
   deletedList: CatalogItem["id"][]
   isLoading: boolean
   isItemLoading: boolean
-  isError: boolean
+  errors: CatalogErrors
   currentItem: CatalogItem | null
   treeList: TreeListItem | null
-  page: number
 }
 
 export type TreeListItem = {

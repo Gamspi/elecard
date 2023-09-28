@@ -1,7 +1,7 @@
 import React, { memo, useId } from "react"
 import { Component as FilterRadioItem } from "./component/RadioFilterItem"
 import { filters } from "@features/catalog/catalogFilter/config"
-import { useController as useCatalogFilterController } from "@features/catalog/catalogFilter/model"
+import { useController as useCatalogFilterController } from "@features/catalog/catalogFilter/controller"
 import { style as StyledComponent } from "./style"
 import { CatalogItem } from "@entities/catalog/model/types"
 import { CatalogSortEnum } from "@features/catalog/catalogFilter/lib/enum"

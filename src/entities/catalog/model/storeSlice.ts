@@ -5,7 +5,11 @@ import {
   catalogItemConverter,
   catalogTreeConverter,
 } from "@entities/catalog/lib/converters"
-import { CatalogItem, TreeListItem } from "@entities/catalog/model/types"
+import {
+  CatalogErrors,
+  CatalogItem,
+  TreeListItem,
+} from "@entities/catalog/model/types"
 import { DELETE_CATALOG_KEY } from "@entities/catalog/config"
 import { getDeletedList } from "@entities/catalog/lib/getDeletedList"
 import { RootState } from "@app/store"
@@ -24,18 +28,19 @@ const getCatalogList = createAsyncThunk(
 
 const getCatalogItemById = createAsyncThunk(
   "catalog/fetchCatalogItemById",
-  async (id: number, { rejectWithValue, getState }) => {
+  async (id: number | string, { rejectWithValue, getState }) => {
     try {
       let result = null
       const {
         catalog: { list },
       } = getState() as RootState
       if (list.length) {
-        result = list.find((item) => item.id === id)
+        result = list.find((item) => item.id.toString() === id.toString())
       } else {
         const response = await elecard.catalog.fetchCatalogList()
         const data = response.data.find(
-          (item, index) => catalogItemConverter(item, index).id === id,
+          (item, index) =>
+            catalogItemConverter(item, index).id.toString() === id.toString(),
         )
         if (!data) return rejectWithValue("Error getting directory item.")
         result = catalogItemConverter(data, id)
@@ -51,18 +56,14 @@ const slice = createSlice({
   name: "catalog",
   initialState,
   reducers: {
-    setPage: (state, action: PayloadAction<number>) => {
-      state.page = action.payload
-    },
     updateDeletedList(state) {
       state.deletedList = getDeletedList()
     },
-    setList: (state, action: PayloadAction<CatalogItem[]>) => {
-      state.isError = false
-      state.list = action.payload
-    },
     setCurrentItem: (state, action: PayloadAction<CatalogItem | null>) => {
       state.currentItem = action.payload
+    },
+    resetError: (state, action: PayloadAction<keyof CatalogErrors>) => {
+      state.errors[action.payload] = false
     },
     refreshCatalogList: (state) => {
       state.deletedList = []
@@ -81,6 +82,10 @@ const slice = createSlice({
     builder
       .addCase(getCatalogList.pending, (state) => {
         state.isLoading = true
+        state.errors = {
+          ...state.errors,
+          fetchList: true,
+        }
       })
       .addCase(getCatalogList.fulfilled, (state, action) => {
         if (!(action.payload && Array.isArray(action.payload))) return
@@ -110,27 +115,45 @@ const slice = createSlice({
         }
         state.list = currentList
         state.isLoading = false
-        state.isError = false
+        state.errors = {
+          ...state.errors,
+          fetchList: false,
+        }
       })
       .addCase(getCatalogList.rejected, (state) => {
-        state.isError = true
+        state.errors = {
+          ...state.errors,
+          fetchList: true,
+        }
       })
 
       .addCase(getCatalogItemById.pending, (state) => {
-        state.isError = false
+        state.errors = {
+          ...state.errors,
+          fetchItem: false,
+        }
         state.isItemLoading = true
       })
 
       .addCase(getCatalogItemById.fulfilled, (state, action) => {
         if (action.payload) {
-          state.isError = false
+          state.errors = {
+            ...state.errors,
+            fetchItem: false,
+          }
           state.currentItem = action.payload
         } else {
-          state.isError = true
+          state.errors = {
+            ...state.errors,
+            fetchItem: true,
+          }
         }
       })
       .addCase(getCatalogItemById.rejected, (state) => {
-        state.isError = true
+        state.errors = {
+          ...state.errors,
+          fetchItem: true,
+        }
       })
   },
 })

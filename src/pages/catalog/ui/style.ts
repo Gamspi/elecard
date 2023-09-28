@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { Container } from "@shared/ui"
 import { NavLink } from "react-router-dom"
 
@@ -12,13 +12,30 @@ const styledContainer = styled(Container)`
 const Body = styled.div`
   min-height: 100%;
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+`
+
+type TapProps = {
+  $isActive: boolean
+}
+const Tab = styled.div<TapProps>`
+  grid-area: 1/1/1/1;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  ${(props) =>
+    props.$isActive &&
+    css`
+      flex-direction: column;
+      visibility: visible;
+      max-height: inherit;
+    `}
 `
 const Header = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
+  width: 100%;
 `
 const Links = styled.div`
   justify-self: center;
@@ -32,6 +49,7 @@ const LinkItem = styled(NavLink)`
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 0.8rem;
+
   &:before,
   &:after {
     content: "";
@@ -54,14 +72,18 @@ const LinkItem = styled(NavLink)`
     height: 0.6rem;
     transition: transform 0.3s ease-in;
   }
-  &.active:after {
-    transform: scale(1, 1);
+  &.active {
+    pointer-events: none;
+    &:after {
+      transform: scale(1, 1);
+    }
   }
 `
 export const style = {
-  Container: styledContainer,
+  Tab,
   Body,
   Header,
   Links,
   LinkItem,
+  Container: styledContainer,
 }

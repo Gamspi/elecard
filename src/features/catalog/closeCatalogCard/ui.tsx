@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import { Button } from "@shared/ui"
-import { useCloseCatalogCard } from "@features/catalog/closeCatalogCard/model"
+import { useCloseCatalogCard } from "@features/catalog/closeCatalogCard/contreller"
 import { CatalogItem } from "@entities/catalog/model/types"
 
 type Props = {

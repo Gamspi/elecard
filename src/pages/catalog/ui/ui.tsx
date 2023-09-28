@@ -1,28 +1,35 @@
 import React, { memo } from "react"
 import { style as StyledComponent } from "./style"
-import { Outlet } from "react-router-dom"
 import { Loader, Page, Typography } from "@shared/ui"
-import { useController } from "../controller"
+import { useController as useCatalogController } from "../controller"
+import { tabs } from "@pages/catalog/config"
+import { Outlet } from "react-router-dom"
 
 const Catalog = () => {
-  const { isLoading } = useController()
+  const { isShowLoader, tab } = useCatalogController()
   return (
     <Page>
-      <Loader isLoading={isLoading} />
+      <Loader isLoading={isShowLoader} />
       <StyledComponent.Container>
         <StyledComponent.Header>
           <Typography.Title>Catalog</Typography.Title>
           <StyledComponent.Links>
-            <StyledComponent.LinkItem to="cards">
-              Cards
-            </StyledComponent.LinkItem>
-            <StyledComponent.LinkItem to="tree">Tree</StyledComponent.LinkItem>
+            {[...tabs].map(([_, item]) => (
+              <StyledComponent.LinkItem to={item.path} key={item.path}>
+                {item.label}
+              </StyledComponent.LinkItem>
+            ))}
           </StyledComponent.Links>
         </StyledComponent.Header>
         <StyledComponent.Body>
-          <Outlet />
+          {[...tabs].map(([_, item]) => (
+            <StyledComponent.Tab $isActive={item.path === tab} key={item.path}>
+              <item.element />
+            </StyledComponent.Tab>
+          ))}
         </StyledComponent.Body>
       </StyledComponent.Container>
+      <Outlet />
     </Page>
   )
 }

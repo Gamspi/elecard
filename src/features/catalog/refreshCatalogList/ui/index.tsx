@@ -1,6 +1,6 @@
 import React, { ComponentProps, memo } from "react"
 import { Button } from "@shared/ui"
-import { useController as useButtonController } from "../model"
+import { useController as useButtonController } from "../controller"
 
 type Props = ComponentProps<typeof Button.Primary>
 const RefreshCatalogList = (props: Props) => {

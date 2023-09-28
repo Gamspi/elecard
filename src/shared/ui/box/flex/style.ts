@@ -1,5 +1,13 @@
 import styled, { css } from "styled-components"
-import { StyledPropType } from "@shared/ui/box/flex/types"
+import { CSSProperties } from "react"
+
+export type StyledPropType = {
+  $direction?: CSSProperties["flexDirection"]
+  $align?: CSSProperties["alignItems"]
+  $justify?: CSSProperties["justifyContent"]
+  $gap?: CSSProperties["gap"]
+  $wrap?: CSSProperties["flexWrap"]
+}
 
 export const StyledFlexBox = styled.div<StyledPropType>`
   display: flex;
@@ -25,6 +33,12 @@ export const StyledFlexBox = styled.div<StyledPropType>`
     if ($gap)
       return css`
         gap: ${$gap}rem;
+      `
+  }};
+  ${({ $wrap }) => {
+    if ($wrap)
+      return css`
+        flex-wrap: ${$wrap};
       `
   }};
 `
