@@ -1,7 +1,6 @@
 import React, { lazy, memo, Suspense } from "react"
 import { Routes, Route, Navigate } from "react-router-dom"
 import { Catalog } from "@pages/catalog"
-import { CatalogDetail } from "@pages/catalogDetail"
 import { NotFoundPage } from "@pages/notFoundPage"
 
 const Layout = lazy(() => import("../layout/index"))
@@ -26,16 +25,7 @@ const AppRouter = () => {
           }
         >
           <Route index element={<Navigate to="cards" />} />
-          <Route path=":tab" element={null}>
-            <Route
-              path=":id"
-              element={
-                <Suspense>
-                  <CatalogDetail />
-                </Suspense>
-              }
-            />
-          </Route>
+          <Route path=":tab" element={null} />
         </Route>
         <Route
           path="*"

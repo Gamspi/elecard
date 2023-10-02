@@ -2,7 +2,7 @@ import React, { memo } from "react"
 import { style as StyledComponent } from "./style"
 import { Loader, Typography } from "@shared/ui"
 import { useController as useCatalogController } from "../controller"
-import { Outlet } from "react-router-dom"
+import { CatalogImagePopup } from "@widgets/catalogImagePopup"
 
 const Catalog = () => {
   const { isShowLoader, tab, tabArray } = useCatalogController()
@@ -29,7 +29,7 @@ const Catalog = () => {
           ))}
         </StyledComponent.Body>
       </StyledComponent.Container>
-      <Outlet />
+      <CatalogImagePopup />
     </StyledComponent.Page>
   )
 }

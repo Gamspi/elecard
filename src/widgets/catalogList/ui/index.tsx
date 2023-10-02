@@ -16,7 +16,6 @@ const CatalogList = () => {
   const {
     page,
     sort,
-    scrollListNode,
     computedPage,
     computedList,
     handleSort,
@@ -42,7 +41,7 @@ const CatalogList = () => {
         </Box.Flex>
       </StyledComponent.Actions>
       <StyledComponent.Wrapper>
-        <StyledComponent.Content ref={scrollListNode}>
+        <StyledComponent.Content>
           {computedPage.map((item) => (
             <CatalogComponent.Card
               key={item.id}

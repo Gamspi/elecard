@@ -2,7 +2,7 @@ import React, { memo, useState } from "react"
 import * as StyledComponent from "./style"
 import { Component as CatalogTreeItem } from "@entities/catalog/ui/catalogTreeListItem"
 import { TreeListItem } from "@entities/catalog/model/types"
-import { useLocation } from "react-router-dom"
+import { OpenCatalogImage } from "@features/catalog/openCatalogImage"
 
 type Props = {
   item: TreeListItem
@@ -10,7 +10,6 @@ type Props = {
 }
 const TreeListContent = ({ item, button: ButtonElement }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { pathname } = useLocation()
   const handleChangeIsOpen = () => setIsOpen((prev) => !prev)
   let childrenList = null
 
@@ -31,7 +30,7 @@ const TreeListContent = ({ item, button: ButtonElement }: Props) => {
       </ButtonElement>
       <StyledComponent.Children $isOpen={isOpen} as={item.item ? "div" : ""}>
         {childrenList || (
-          <CatalogTreeItem item={item.item} to={`${pathname}/${item.id}`} />
+          <CatalogTreeItem item={item.item} actionBtn={OpenCatalogImage} />
         )}
       </StyledComponent.Children>
     </StyledComponent.Item>

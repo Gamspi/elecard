@@ -67,15 +67,16 @@ const LinkItem = styled(NavLink)`
     border-radius: 50%;
   }
   &:before {
-    width: 1rem;
-    height: 1rem;
-    border: 1px solid ${({ theme }) => theme.color.blue};
+    width: 0.8rem;
+    height: 0.8rem;
+    outline: 1px solid ${({ theme }) => theme.color.blue};
+    outline-offset: 3px;
   }
   &:after {
     transform: scale(0, 0);
     background: ${({ theme }) => theme.color.blue};
-    width: 0.6rem;
-    height: 0.6rem;
+    width: 0.8rem;
+    height: 0.8rem;
     transition: transform 0.3s ease-in;
   }
   &.active {

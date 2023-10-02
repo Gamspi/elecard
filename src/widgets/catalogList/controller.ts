@@ -8,19 +8,11 @@ import { CatalogSortEnum } from "@features/catalog/catalogFilter/lib/enum"
 export const useController = () => {
   const [sort, setSort] = useState(CatalogSortEnum.CATEGORY)
   const [page, setPage] = useState(DEFAULT_PAGE)
-  const scrollListNode = useRef<HTMLDivElement>(null)
 
   const [sortedList, setSortedList] = useState<CatalogItem[]>([])
   const { list, deletedList } = useTypeSelector((state) => state.catalog)
   const handleSetPage = (page: number) => {
     setPage(page)
-    if (!scrollListNode.current) return
-
-    scrollListNode.current.scrollIntoView({
-      block: "start",
-      inline: "nearest",
-      behavior: "smooth",
-    })
   }
   const handleSetSortedList = (value: CatalogItem[]) => {
     setSortedList(value)
@@ -54,7 +46,6 @@ export const useController = () => {
     sort,
     computedList,
     computedPage,
-    scrollListNode,
     handleSort,
     handleSetPage,
     handleSetSortedList,

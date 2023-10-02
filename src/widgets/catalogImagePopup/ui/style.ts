@@ -9,6 +9,23 @@ const Container = styled.aside`
   height: 100%;
   background: ${({ theme }) => theme.color.blue}33;
   position: fixed;
+  &.enter {
+    opacity: 0;
+  }
+
+  &.enter-active {
+    opacity: 1;
+    transition: opacity 300ms linear, transform 300ms linear;
+  }
+
+  &.exit {
+    opacity: 1;
+  }
+
+  &.exit-active {
+    opacity: 0;
+    transition: opacity 300ms linear, transform 300ms linear;
+  }
 `
 
 const Body = styled.div`
@@ -22,6 +39,7 @@ const Body = styled.div`
 `
 const Button = styled(UiButton.Icon)`
   position: absolute;
+  z-index: 1;
   top: 3.2rem;
   right: 3.2rem;
   width: 3rem;

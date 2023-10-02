@@ -12,7 +12,6 @@ import {
 } from "@entities/catalog/model/types"
 import { DELETE_CATALOG_KEY } from "@entities/catalog/config"
 import { getDeletedList } from "@entities/catalog/lib/getDeletedList"
-import { RootState } from "@app/store"
 
 const getCatalogList = createAsyncThunk(
   "catalog/fetchCatalogList",
@@ -26,36 +25,13 @@ const getCatalogList = createAsyncThunk(
   },
 )
 
-const getCatalogItemById = createAsyncThunk(
-  "catalog/fetchCatalogItemById",
-  async (id: number | string, { rejectWithValue, getState }) => {
-    try {
-      let result = null
-      const {
-        catalog: { list },
-      } = getState() as RootState
-      if (list.length) {
-        result = list.find((item) => item.id.toString() === id.toString())
-      } else {
-        const response = await elecard.catalog.fetchCatalogList()
-        const data = response.data.find(
-          (item, index) =>
-            catalogItemConverter(item, index).id.toString() === id.toString(),
-        )
-        if (!data) return rejectWithValue("Error getting directory item.")
-        result = catalogItemConverter(data, id)
-      }
-      return result
-    } catch (e) {
-      return rejectWithValue("Ошибка получение карточек каталога")
-    }
-  },
-)
-
 const slice = createSlice({
   name: "catalog",
   initialState,
   reducers: {
+    updateIsOpenImage(state, action: PayloadAction<boolean>) {
+      state.isOpenCurrentImage = action.payload
+    },
     updateDeletedList(state) {
       state.deletedList = getDeletedList()
     },
@@ -126,41 +102,11 @@ const slice = createSlice({
           fetchList: true,
         }
       })
-
-      .addCase(getCatalogItemById.pending, (state) => {
-        state.errors = {
-          ...state.errors,
-          fetchItem: false,
-        }
-        state.isItemLoading = true
-      })
-
-      .addCase(getCatalogItemById.fulfilled, (state, action) => {
-        if (action.payload) {
-          state.errors = {
-            ...state.errors,
-            fetchItem: false,
-          }
-          state.currentItem = action.payload
-        } else {
-          state.errors = {
-            ...state.errors,
-            fetchItem: true,
-          }
-        }
-      })
-      .addCase(getCatalogItemById.rejected, (state) => {
-        state.errors = {
-          ...state.errors,
-          fetchItem: true,
-        }
-      })
   },
 })
 
 export const actions = {
   ...slice.actions,
   getCatalogList,
-  getCatalogItemById,
 }
 export const reducer = slice.reducer

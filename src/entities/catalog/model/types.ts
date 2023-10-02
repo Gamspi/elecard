@@ -15,6 +15,7 @@ export interface CatalogState {
   errors: CatalogErrors
   currentItem: CatalogItem | null
   treeList: TreeListItem | null
+  isOpenCurrentImage: boolean
 }
 
 export type TreeListItem = {

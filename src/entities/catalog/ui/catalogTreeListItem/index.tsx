@@ -1,18 +1,18 @@
-import React, { ComponentProps, memo } from "react"
+import React, { ComponentProps, memo, ReactElement } from "react"
 import { Style as StyledComponent } from "./style"
 import { CatalogItem } from "@entities/catalog/model/types"
-import { Link } from "react-router-dom"
 
 type Props = {
   item?: CatalogItem
-} & ComponentProps<typeof Link>
-const CatalogTreeItem = ({ item, ...props }: Props) => {
+  actionBtn: React.ElementType
+}
+const CatalogTreeItem = ({ item, actionBtn: ActionBtn }: Props) => {
   if (!item) return null
   return (
     <StyledComponent.Block>
-      <Link {...props}>
+      <ActionBtn id={item.id}>
         <StyledComponent.Img src={item.image} alt={item.name} />
-      </Link>
+      </ActionBtn>
       <StyledComponent.Body>
         <StyledComponent.Property>
           <b>Name:</b>&nbsp;{item.name}

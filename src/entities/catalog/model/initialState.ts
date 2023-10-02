@@ -11,4 +11,5 @@ export const initialState: CatalogState = {
   currentItem: null,
   isItemLoading: false,
   treeList: null,
+  isOpenCurrentImage: false,
 }
